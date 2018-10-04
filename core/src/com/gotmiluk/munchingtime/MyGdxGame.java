@@ -10,7 +10,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	Texture Background1, Background2;
 	SpriteBatch batch;
 	float xMax, xCoordBg1, xCoordBg2;
-	final int BACKGROUND_MOVE_SPEED = 100; // pixels per second. Put your value here.
+	final int BACKGROUND_MOVE_SPEED = 5; // pixels per second. Put your value here.
 
 	@Override
 	public void create () {
@@ -18,21 +18,31 @@ public class MyGdxGame extends ApplicationAdapter {
 		Background1 = new Texture(Gdx.files.internal("Background for game.jpg"));
 		Background2 = new Texture(Gdx.files.internal("Background for game.jpg")); // identical
 		xMax = 1280;
-		xCoordBg1 = xMax*(-1); xCoordBg2 = 0;
+		xCoordBg1 = 0;
+		xCoordBg2 = -1280;
 	}
 
 	@Override
 	public void render () {
-		xCoordBg1 += BACKGROUND_MOVE_SPEED * Gdx.graphics.getDeltaTime();
-		xCoordBg2 = xCoordBg1 + xMax;  // We move the background, not the camera
-		if (xCoordBg1 >= 0) {
-			xCoordBg1 = xMax*(-1); xCoordBg2 = 0;
-		}
-		batch.begin();
-		batch.draw(Background1, 0, xCoordBg1);
-		batch.draw(Background2, 0, xCoordBg2);
+		xCoordBg1 += BACKGROUND_MOVE_SPEED;
+        xCoordBg2 += BACKGROUND_MOVE_SPEED;
+
+        batch.begin();
+		batch.draw(Background1, xCoordBg1, 0);
+        batch.draw(Background2, xCoordBg2, 0);
+        Scroll();
 		batch.end();
 	}
+
+
+	void Scroll(){
+        if(xCoordBg1 == 1280){
+            xCoordBg1 = -1280;
+        }
+        if(xCoordBg2 == 1280){
+            xCoordBg2 = -1280;
+        }
+    }
 
 	@Override
 	public void dispose () {
