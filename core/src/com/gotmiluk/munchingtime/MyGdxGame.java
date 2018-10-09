@@ -10,7 +10,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	Texture Background1, Background2;
 	SpriteBatch batch;
 	float xMax, xCoordBg1, xCoordBg2;
-	final int BACKGROUND_MOVE_SPEED = 5; // pixels per second. Put your value here.
+	final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
 
 	@Override
 	public void create () {
