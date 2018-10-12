@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
 
-public class MyGdxGame extends ApplicationAdapter {
+public class GamMunch extends ApplicationAdapter {
 	Texture Background1, Background2;
 	SpriteBatch batch;
 	float xMax, xCoordBg1, xCoordBg2;
