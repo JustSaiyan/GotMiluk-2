@@ -25,20 +25,6 @@ public class ScrOld implements Screen, InputProcessor {
         game = _game;
 
         sprHero = new SprMario(80, 100, 0, 360);
-
-        if (Gdx.input.isKeyPressed(Keys.A)) {
-            sprHero.setX(sprHero.getX() -4);
-            System.out.println("Move Left");
-        }
-        if (Gdx.input.isKeyPressed(Keys.W)) {
-            sprHero.setY(sprHero.getY() +4);
-            System.out.println("Move Up");
-        }
-        if (Gdx.input.isKeyPressed(Keys.D)) {
-            sprHero.setX(sprHero.getX() +2);
-            System.out.println("Move Right");
-        }
-
         }
 
     @Override
