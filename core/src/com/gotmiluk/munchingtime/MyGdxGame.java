@@ -11,7 +11,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	Texture Background1, Background2;
 	SpriteBatch batch;
 	float xMax, xCoordBg1, xCoordBg2;
-	final int BACKGROUND_MOVE_SPEED = 5; // pixels per second. Put your value here.
+	final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
 
 
 	@Override
@@ -27,27 +27,32 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	@Override
 	public void render () {
+		xCoordBg1 += BACKGROUND_MOVE_SPEED;
+		xCoordBg2 += BACKGROUND_MOVE_SPEED;
 
-		batch.dispose();
-		
-
-	    xCoordBg1 += BACKGROUND_MOVE_SPEED;
-        xCoordBg2 += BACKGROUND_MOVE_SPEED;
-          batch.begin();
+		batch.begin();
 		batch.draw(Background1, xCoordBg1, 0);
-        batch.draw(Background2, xCoordBg2, 0);
-        Scroll();
+		batch.draw(Background2, xCoordBg2, 0);
+		Scroll();
 		batch.end();
 	}
 
 
 	void Scroll(){
-        if(xCoordBg1 == 1280){
-            xCoordBg1 = -1280;
-        }
-        if(xCoordBg2 == 1280){
-            xCoordBg2 = -1280;
-        }
-    }}
+		if(xCoordBg1 == 1280){
+			xCoordBg1 = -1280;
+		}
+		if(xCoordBg2 == 1280){
+			xCoordBg2 = -1280;
+		}
+	}
 
-// I've used this site to help me with setting a image as a background https://stackoverflow.com/questions/25468270/libgdx-how-do-i-add-a-background-image?rq=1
+	@Override
+	public void dispose () {
+		batch.dispose();
+		Background1.dispose();
+		Background2.dispose();
+	}
+}
+
+	// I've used this site to help me with setting a image as a background https://stackoverflow.com/questions/25468270/libgdx-how-do-i-add-a-background-image?rq=1
