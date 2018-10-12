@@ -16,6 +16,10 @@ public class ScrOld implements Screen, InputProcessor {
     SprMario sprHero;
     GamMunch game;
     OrthographicCamera oc;
+    Texture Background1, Background2;
+    int xMax, xCoordBg1, xCoordBg2;
+    final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
+
 
    // private Sprite sprHero; // a Sprite allows you to get the bounding rectangle
 
@@ -25,6 +29,12 @@ public class ScrOld implements Screen, InputProcessor {
         game = _game;
 
         sprHero = new SprMario(80, 100, 0, 360);
+
+        batch = new SpriteBatch();
+        Background1 = new Texture("Background.jpg");
+        Background2 = new Texture("Background.jpg"); // identical
+        xMax = 1280;
+        xCoordBg1 = 0;
         }
 
     @Override
@@ -116,6 +126,25 @@ public class ScrOld implements Screen, InputProcessor {
         if (sprHero.getY() > 400) {
             sprHero.setY(400);
         }
+
+        xCoordBg1 += BACKGROUND_MOVE_SPEED;
+        xCoordBg2 += BACKGROUND_MOVE_SPEED;
+
+        batch.begin();
+        batch.setProjectionMatrix(oc.combined);
+//        batch.draw(Background1, xCoordBg1, 0);
+        batch.draw(Background2, 0, 0);
+        Scroll();
+        batch.end();
+    }
+
+    void Scroll(){
+        if(xCoordBg1 == 1280){
+            xCoordBg1 = -1280;
+        }
+        if(xCoordBg2 == 1280){
+            xCoordBg2 = -1280;
+        }
     }
 
     @Override
@@ -140,6 +169,8 @@ public class ScrOld implements Screen, InputProcessor {
 
     @Override
     public void dispose() {
-
+        batch.dispose();
+        Background1.dispose();
+        Background2.dispose();
     }
 }
