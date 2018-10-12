@@ -4,14 +4,12 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 
 
 public class MyGdxGame extends ApplicationAdapter {
 	Texture Background1, Background2;
 	SpriteBatch batch;
-	Texture teximg;
-	TextureRegion texbackgroundTexture;
 	float xMax, xCoordBg1, xCoordBg2;
 	final int BACKGROUND_MOVE_SPEED = 5; // pixels per second. Put your value here.
 
@@ -29,10 +27,11 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	@Override
 	public void dispose () {
-		batch.dispose();
-		teximg.dispose();
 
-	xCoordBg1 += BACKGROUND_MOVE_SPEED;
+		batch.dispose();
+		
+
+	    xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
           batch.begin();
 		batch.draw(Background1, xCoordBg1, 0);
