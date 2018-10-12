@@ -9,38 +9,38 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class MyGdxGame extends ApplicationAdapter {
 	Texture Background1, Background2;
 	SpriteBatch batch;
-	float xMax, xCoordBg1, xCoordBg2;
+	int nMax, nCoordBg1, nCoordBg2;
 	final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		Background1 = new Texture(Gdx.files.internal("Background for game.jpg"));
-		Background2 = new Texture(Gdx.files.internal("Background for game.jpg")); // identical
-		xMax = 1280;
-		xCoordBg1 = 0;
-		xCoordBg2 = -1280;
+		Background1 = new Texture("Background for game.jpg");
+		Background2 = new Texture("Background for game.jpg");// identical
+		nMax = 1280;
+		nCoordBg1 = 0;
+		nCoordBg2 = -1280;
 	}
 
 	@Override
 	public void render () {
-		xCoordBg1 += BACKGROUND_MOVE_SPEED;
-        xCoordBg2 += BACKGROUND_MOVE_SPEED;
+		nCoordBg1 += BACKGROUND_MOVE_SPEED;
+        nCoordBg2 += BACKGROUND_MOVE_SPEED;
 
         batch.begin();
-		batch.draw(Background1, xCoordBg1, 0);
-        batch.draw(Background2, xCoordBg2, 0);
+		batch.draw(Background1, nCoordBg1, 0);
+        batch.draw(Background2, nCoordBg2, 0);
         Scroll();
 		batch.end();
 	}
 
 
 	void Scroll(){
-        if(xCoordBg1 == 1280){
-            xCoordBg1 = -1280;
+        if(nCoordBg1 == 1280){
+            nCoordBg1 = -1280;
         }
-        if(xCoordBg2 == 1280){
-            xCoordBg2 = -1280;
+        if(nCoordBg2 == 1280){
+            nCoordBg2 = -1280;
         }
     }
 
