@@ -28,13 +28,14 @@ public class ScrPlay implements Screen, InputProcessor {
         batch = new SpriteBatch();
         game = _game;
 
-        sprHero = new SprMario(80, 100, 0, 360);
+        sprHero = new SprMario(80, 100, 0, 128);
 
         batch = new SpriteBatch();
         Background1 = new Texture("Background.jpg");
         Background2 = new Texture("Background.jpg"); // identical
         xMax = 1280;
         xCoordBg1 = 0;
+        xCoordBg2 = -1280;
     }
 
     @Override
@@ -80,7 +81,7 @@ public class ScrPlay implements Screen, InputProcessor {
     @Override
     public void show() {
         oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        oc.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.update();
         batch = new SpriteBatch();
         //       sprHero = new SprMario(100,100, 150, 150, "mario.png");
@@ -90,8 +91,13 @@ public class ScrPlay implements Screen, InputProcessor {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 0); //Green background.
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.begin();
+        batch.setProjectionMatrix(oc.combined);
+        batch.draw(Background1, xCoordBg1, 0);
+        batch.draw(Background2, xCoordBg2, 0);
+        Scroll();
+        batch.end();
+
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
         sprHero.draw(batch);
@@ -102,7 +108,7 @@ public class ScrPlay implements Screen, InputProcessor {
             System.out.println("Move Left");
         }
         if (Gdx.input.isKeyPressed(Keys.W)) {
-            sprHero.setY(sprHero.getY() - 4);
+            sprHero.setY(sprHero.getY() + 4);
             System.out.println("Move Up");
         }
         if (Gdx.input.isKeyPressed(Keys.D)) {
@@ -129,13 +135,6 @@ public class ScrPlay implements Screen, InputProcessor {
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
-
-        batch.begin();
-        batch.setProjectionMatrix(oc.combined);
-        batch.draw(Background1, xCoordBg1, 0);
-        batch.draw(Background2, 0, 0);
-        Scroll();
-        batch.end();
     }
 
     void Scroll(){

@@ -9,6 +9,6 @@ public class SprMario extends Sprite {
         super (new Texture(Gdx.files.internal("mario.png"))); //Kieran's final project
         setSize(nW, nH);
         setPosition(nX, nY);
-        setFlip(false, true);
+        setFlip(false, false);
     }
 }
