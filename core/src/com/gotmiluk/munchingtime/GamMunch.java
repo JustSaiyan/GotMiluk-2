@@ -6,6 +6,7 @@ import com.gotmiluk.munchingtime.ScrPlay;
 
 public class GamMunch extends Game {
 	ScrPlay scrPlay;
+	ScrMenu scrMenu;
 	GamMunch munchingTime;
 
 
@@ -14,6 +15,8 @@ public class GamMunch extends Game {
 	public void updateState(int _nScreen) {
 		nScreen = _nScreen;
 		if (nScreen == 0) {
+			setScreen(scrMenu);
+		} else if (nScreen == 1) {
 			setScreen(scrPlay);
 		}
 
