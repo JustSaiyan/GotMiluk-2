@@ -17,7 +17,8 @@ public class ScrPlay implements Screen, InputProcessor {
     GamMunch game;
     OrthographicCamera oc;
     Texture Background1, Background2;
-    int xMax, xCoordBg1, xCoordBg2;
+    double dYspeedM;
+   int xMax, xCoordBg1, xCoordBg2;
     final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
 
 
@@ -105,15 +106,21 @@ public class ScrPlay implements Screen, InputProcessor {
 
         if (Gdx.input.isKeyPressed(Keys.A)) {
             sprHero.setX(sprHero.getX() - 4);
-            System.out.println("Move Left");
+
         }
         if (Gdx.input.isKeyPressed(Keys.W)) {
             sprHero.setY(sprHero.getY() + 4);
-            System.out.println("Move Up");
+            dYspeedM=10;
+            sprHero.setY(sprHero.getY() +8);
+        }
+        if(sprHero.getY()>50){
+            dYspeedM-=1;
+            sprHero.translateY((float) dYspeedM);
+
         }
         if (Gdx.input.isKeyPressed(Keys.D)) {
             sprHero.setX(sprHero.getX() + 4);
-            System.out.println("Move Right");
+
         }
 
 
