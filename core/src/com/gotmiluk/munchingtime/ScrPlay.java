@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class ScrPlay implements Screen, InputProcessor {
     SpriteBatch batch;
-    SprMario sprHero;
+    SprPancake sprHero;
     GamMunch game;
     OrthographicCamera oc;
     Texture Background1, Background2;
@@ -28,7 +28,7 @@ public class ScrPlay implements Screen, InputProcessor {
         batch = new SpriteBatch();
         game = _game;
 
-        sprHero = new SprMario(80, 100, 0, 128);
+        sprHero = new SprPancake(80, 100, 0, 128);
 
         batch = new SpriteBatch();
         Background1 = new Texture("Background.jpg");
@@ -84,7 +84,7 @@ public class ScrPlay implements Screen, InputProcessor {
         oc.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.update();
         batch = new SpriteBatch();
-        //       sprHero = new SprMario(100,100, 150, 150, "mario.png");
+
         Gdx.input.setInputProcessor(this);
 
     }
