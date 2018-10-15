@@ -1,11 +1,10 @@
 package com.gotmiluk.munchingtime;
 
 import com.badlogic.gdx.Game;
-import com.gotmiluk.munchingtime.ScrOld;
+import com.gotmiluk.munchingtime.ScrPlay;
 
 
 public class GamMunch extends Game {
-	ScrOld scrOld;
 	ScrPlay scrPlay;
 	GamMunch munchingTime;
 
@@ -15,7 +14,7 @@ public class GamMunch extends Game {
 	public void updateState(int _nScreen) {
 		nScreen = _nScreen;
 		if (nScreen == 0) {
-			setScreen(scrOld);
+			setScreen(scrPlay);
 		}
 
 
@@ -26,7 +25,7 @@ public class GamMunch extends Game {
 	public void create () {
 		nScreen = 0;
 		// notice that "this" is passed to each screen. Each screen now has access to methods within the "game" master program
-		scrOld = new ScrOld(this);
+		scrPlay = new ScrPlay(this);
 
 		updateState(0);
 	}
