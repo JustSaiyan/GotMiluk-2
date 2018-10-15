@@ -132,7 +132,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
-//        batch.draw(Background1, xCoordBg1, 0);
+        batch.draw(Background1, xCoordBg1, 0);
         batch.draw(Background2, 0, 0);
         Scroll();
         batch.end();
