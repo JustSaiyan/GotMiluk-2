@@ -146,10 +146,10 @@ public class ScrPlay implements Screen, InputProcessor {
 
     void Scroll(){
         if(xCoordBg1 == 1280){
-            xCoordBg1 = -1180;
+            xCoordBg1 = -1280;
         }
         if(xCoordBg2 == 1280){
-            xCoordBg2 = -1180;
+            xCoordBg2 = -1280;
         }
     }
 
