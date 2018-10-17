@@ -33,7 +33,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
         batch = new SpriteBatch();
         Background1 = new Texture("Background.jpg");
-        Background2 = new Texture("Background.jpg"); // identical
+        Background2 = new Texture("Background2.jpg"); // identical
         xMax = 1280;
         xCoordBg1 = 0;
         xCoordBg2 = -1280;
