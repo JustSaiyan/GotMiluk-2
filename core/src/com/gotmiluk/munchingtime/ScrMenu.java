@@ -92,6 +92,7 @@ public class ScrMenu implements Screen, InputProcessor {
             if (isHit(screenX, screenY, btnPlay)) {
                 System.out.println("Hit Play");
                 munchingTime.updateState(1);
+                Menumusic.stop();
             }
         }
         return false;

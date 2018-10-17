@@ -8,17 +8,20 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class ScrPlay implements Screen, InputProcessor {
+    private Music Gamemusic;
     SpriteBatch batch;
     SprPancake sprHero;
+    SprEnemy sprEnemy;
     GamMunch game;
     OrthographicCamera oc;
     Texture Background1, Background2;
     double dYspeedM;
-   int xMax, xCoordBg1, xCoordBg2;
+    int xMax, xCoordBg1, xCoordBg2;
     final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
 
 
@@ -26,10 +29,15 @@ public class ScrPlay implements Screen, InputProcessor {
 
     public ScrPlay(GamMunch _game) {
 
+        Gamemusic = Gdx.audio.newMusic(Gdx.files.internal("MMX.mp3"));
+        Gamemusic.setLooping(true);
+        Gamemusic.play();
+
         batch = new SpriteBatch();
         game = _game;
 
         sprHero = new SprPancake(80, 100, 0, 128);
+        sprEnemy = new SprEnemy(80,100,500,128);
 
         batch = new SpriteBatch();
         Background1 = new Texture("Background.jpg");
@@ -110,18 +118,23 @@ public class ScrPlay implements Screen, InputProcessor {
         }
         if (Gdx.input.isKeyPressed(Keys.W)) {
             sprHero.setY(sprHero.getY() + 4);
-            dYspeedM=10;
-            sprHero.setY(sprHero.getY() +8);
+            dYspeedM = 10;
+            sprHero.setY(sprHero.getY() + 8);
         }
-        if(sprHero.getY()>50){
-            dYspeedM-=1;
+        if(sprHero.getY() > 50){
+            dYspeedM -= 1;
             sprHero.translateY((float) dYspeedM);
 
         }
         if (Gdx.input.isKeyPressed(Keys.D)) {
             sprHero.setX(sprHero.getX() + 4);
-
         }
+
+            batch.begin();
+            batch.setProjectionMatrix(oc.combined);
+            sprEnemy.draw(batch);
+            batch.end();
+
 
 
         // make sure the bucket stays within the screen bounds
