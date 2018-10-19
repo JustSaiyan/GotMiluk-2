@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import java.lang.*;
 
 public class ScrMenu implements Screen, InputProcessor {
 
@@ -92,6 +93,7 @@ public class ScrMenu implements Screen, InputProcessor {
             if (isHit(screenX, screenY, btnPlay)) {
                 System.out.println("Hit Play");
                 munchingTime.updateState(1);
+                Menumusic.stop();
             }
         }
         return false;
