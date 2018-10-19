@@ -28,7 +28,6 @@ public class ScrPlay implements Screen, InputProcessor {
     // private Sprite sprHero; // a Sprite allows you to get the bounding rectangle
 
     public ScrPlay(GamMunch _game) {
-
         Gamemusic = Gdx.audio.newMusic(Gdx.files.internal("MMX.mp3"));
         Gamemusic.setLooping(true);
         Gamemusic.play();
