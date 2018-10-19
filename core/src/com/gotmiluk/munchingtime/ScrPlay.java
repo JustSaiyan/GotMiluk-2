@@ -1,14 +1,15 @@
 package com.gotmiluk.munchingtime;
 
 import com.badlogic.gdx.*;
-import com.badlogic.gdx.Input;
+
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
+
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class ScrPlay implements Screen, InputProcessor {
@@ -92,6 +93,8 @@ public class ScrPlay implements Screen, InputProcessor {
 
     @Override
     public void render(float delta) {
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        oc.update();
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
         batch.draw(Background1, xCoordBg1, 0);
