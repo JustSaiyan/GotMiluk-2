@@ -119,22 +119,12 @@ public class ScrMenu implements Screen, InputProcessor {
         return false;
     }
 
-  /*  public boolean isHit(int nX, int nY, Sprite sprBtn) {
+    public boolean isHit(int nX, int nY, Sprite sprBtn) {
         if (nX > sprBtn.getX() && nX < sprBtn.getX() + sprBtn.getWidth() && nY > sprBtn.getY() && nY < sprBtn.getY() + sprBtn.getHeight()) {
             return true;
         } else {
             return false;
         }
     }
-  */
-
-      public boolean isHit(float x, float y, Sprite sprBtn) {
-         if (sprBtn.getBoundingRectangle().contains(float x, float y)) {
-             return true;
-         } else {
-             return false;
-         }
-    }
-
 }
 
