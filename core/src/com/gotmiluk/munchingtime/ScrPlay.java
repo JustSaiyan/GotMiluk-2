@@ -100,6 +100,8 @@ public class ScrPlay implements Screen, InputProcessor {
 
     @Override
     public void render(float delta) {
+        Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
+        oc.update();
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
         batch.draw(Background1, xCoordBg1, 0);
