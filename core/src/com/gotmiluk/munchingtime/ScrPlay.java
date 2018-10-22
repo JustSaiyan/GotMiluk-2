@@ -13,7 +13,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class ScrPlay implements Screen, InputProcessor {
-    private Music Gamemusic;
     SpriteBatch batch;
     SprPancake sprHero;
     SprEnemy sprEnemy;
@@ -28,9 +27,6 @@ public class ScrPlay implements Screen, InputProcessor {
     // private Sprite sprHero; // a Sprite allows you to get the bounding rectangle
 
     public ScrPlay(GamMunch _game) {
-        Gamemusic = Gdx.audio.newMusic(Gdx.files.internal("MMX.mp3"));
-        Gamemusic.setLooping(true);
-        Gamemusic.play();
 
         batch = new SpriteBatch();
         game = _game;
