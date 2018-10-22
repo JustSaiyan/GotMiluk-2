@@ -14,7 +14,7 @@ import java.lang.*;
 
 public class ScrMenu implements Screen, InputProcessor {
 
-    private Music Menumusic;
+    private Music musMenu;
 
     GamMunch munchingTime;
     SprButton btnPlay;
@@ -25,10 +25,6 @@ public class ScrMenu implements Screen, InputProcessor {
 
     public ScrMenu(GamMunch _munchingTime) {  //Referencing the main class.
         munchingTime = _munchingTime;
-    } {
-        Menumusic = Gdx.audio.newMusic(Gdx.files.internal("Rap_God.mp3"));
-        Menumusic.setLooping(true);
-        Menumusic.play();
     }
 
     @Override
@@ -93,7 +89,6 @@ public class ScrMenu implements Screen, InputProcessor {
             if (isHit(screenX, screenY, btnPlay)) {
                 System.out.println("Hit Play");
                 munchingTime.updateState(1);
-                Menumusic.stop();
             }
         }
         return false;
