@@ -36,8 +36,8 @@ public class ScrPlay implements Screen, InputProcessor {
         Background1 = new Texture("Background.jpg");
         Background2 = new Texture("Background2.jpg"); // identical
         xMax = 0;
-        xCoordBg1 = -200;
-        xCoordBg2 = -1280;
+        xCoordBg1 = 100;
+        xCoordBg2 = -1000;
     }
 
     @Override
@@ -151,8 +151,8 @@ public class ScrPlay implements Screen, InputProcessor {
         if(xCoordBg1 == 1280){
             xCoordBg1 = -1280;
         }
-        if(xCoordBg2 == 1280){
-            xCoordBg2 = -1280;
+        if(xCoordBg2 == 1320){
+            xCoordBg2 = -1000;
         }
     }
 
