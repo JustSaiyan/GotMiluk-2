@@ -17,6 +17,7 @@ public class ScrMenu implements Screen, InputProcessor {
     GamMunch game;
     Music musMenu;
     SprButton btnPlay;
+    SprLogo imgLogo;
 
     OrthographicCamera oc;
     SpriteBatch batch;
@@ -36,7 +37,8 @@ public class ScrMenu implements Screen, InputProcessor {
         oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.update();
         batch = new SpriteBatch();
-        btnPlay = new SprButton(300,90, 100, 100, "Play_button.jpg");
+        btnPlay = new SprButton(300,90, 250, 250, "Play_button.jpg");
+        imgLogo = new SprLogo(500,150, 75, 70, "Logo.png");
         Gdx.input.setInputProcessor(this);
     }
 
@@ -47,6 +49,7 @@ public class ScrMenu implements Screen, InputProcessor {
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
         btnPlay.draw(batch);
+        imgLogo.draw(batch);
         batch.end();
     }
 
