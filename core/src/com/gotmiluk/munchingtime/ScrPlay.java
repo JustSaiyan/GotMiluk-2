@@ -40,7 +40,7 @@ public class ScrPlay implements Screen, InputProcessor {
         game = _game;
 
         sprHero = new SprPancake(80, 100, 0, 128);
-        sprEnemy = new SprEnemy(80, 100, 500, 128);
+
 
         batch = new SpriteBatch();
         Background1 = new Texture("Background.jpg");
@@ -54,7 +54,7 @@ public class ScrPlay implements Screen, InputProcessor {
         musPlay.play();
 
 
-        walkSheet = new Texture(Gdx.files.internal("Sprite Sheet .jpg"));
+        walkSheet = new Texture(Gdx.files.internal("Sprite Sheet .jpg" ));
 
         // Use the split utility method to create a 2D array of TextureRegions. This is
         // possible because this sprite sheet contains frames of equal size and they are
@@ -180,20 +180,18 @@ public class ScrPlay implements Screen, InputProcessor {
 
 
             // make sure the bucket stays within the screen bounds
-        /*if(bucket.x < 0) bucket.x = 0;
-         if(bucket.x > 800 - 64) bucket.x = 800 - 64;*/
-//            if (sprHero.getX() < 0) {
-//                sprHero.setX(0);
-//            }
-//            if (sprHero.getX() > 800 - 64) {
-//                sprHero.setX(800 - 64);
-//            }
-//            if (sprHero.getY() < 0) {
-//                sprHero.setY(0);
-//            }
-//            if (sprHero.getY() > 400) {
-//                sprHero.setY(400);
-//            }
+
+           if (sprHero.getX() < 0) {
+              sprHero.setX(0);
+           }
+           if (sprHero.getX() > 800 - 64) {
+               sprHero.setX(800 - 64);
+          }
+           if (sprHero.getY() < 0) {
+                sprHero.setY(0);
+          }
+         if (sprHero.getY() > 400) {
+              }
 
             xCoordBg1 += BACKGROUND_MOVE_SPEED;
             xCoordBg2 += BACKGROUND_MOVE_SPEED;
