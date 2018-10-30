@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -20,6 +21,8 @@ public class ScrPlay implements Screen, InputProcessor {
     GamMunch game;
     OrthographicCamera oc;
     Texture Background1, Background2;
+    private int nLives;
+    private BitmapFont font;
     double dYspeedM;
     int xMax, xCoordBg1, xCoordBg2;
     final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
@@ -31,6 +34,8 @@ public class ScrPlay implements Screen, InputProcessor {
 
         batch = new SpriteBatch();
         game = _game;
+        nLives = 3;
+        font = new BitmapFont();
 
         sprHero = new SprPancake(80, 100, 0, 128);
         sprEnemy = new SprEnemy(80,100,500,128);
@@ -106,9 +111,11 @@ public class ScrPlay implements Screen, InputProcessor {
         batch.end();
 
         batch.begin();
-        batch.setProjectionMatrix(oc.combined);
-        sprHero.draw(batch);
-        batch.end();
+        if (nLives > 0) {
+            batch.setProjectionMatrix(oc.combined);
+            sprHero.draw(batch);
+            batch.end();
+        }
 
         if (Gdx.input.isKeyPressed(Keys.A)) {
             sprHero.setX(sprHero.getX() - 4);
@@ -130,11 +137,12 @@ public class ScrPlay implements Screen, InputProcessor {
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
             game.updateState(0);
         }
-
             batch.begin();
             batch.setProjectionMatrix(oc.combined);
             sprEnemy.draw(batch);
             batch.end();
+
+        font.draw(batch, Integer.toString(nLives), 200, 10);
 
 
 
