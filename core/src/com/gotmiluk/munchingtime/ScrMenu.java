@@ -25,10 +25,6 @@ public class ScrMenu implements Screen, InputProcessor {
 
     public ScrMenu(GamMunch _game) {  //Referencing the main class.
         game = _game;
-    } {
-        musMenu = Gdx.audio.newMusic(Gdx.files.internal("Rap_God.mp3"));
-        musMenu.setLooping(true);
-        musMenu.play();
     }
 
     @Override
@@ -37,7 +33,7 @@ public class ScrMenu implements Screen, InputProcessor {
         oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.update();
         batch = new SpriteBatch();
-        btnPlay = new SprButton(300,90, 250, 250, "Play_button.jpg");
+        btnPlay = new SprButton(200,90, 220, 250, "Press Play.png");
         imgLogo = new SprLogo(500,150, 75, 70, "Logo.png");
         Gdx.input.setInputProcessor(this);
     }
@@ -95,7 +91,6 @@ public class ScrMenu implements Screen, InputProcessor {
             if (isHit(screenX, screenY, btnPlay)) {
                 System.out.println("Hit Play");
                 game.updateState(1);
-                musMenu.stop();
             }
         }
         return false;

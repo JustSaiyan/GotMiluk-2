@@ -41,10 +41,6 @@ public class ScrPlay implements Screen, InputProcessor {
         xMax = 1280;
         xCoordBg1 = 0;
         xCoordBg2 = -1280;
-
-        musPlay = Gdx.audio.newMusic(Gdx.files.internal("MMX.mp3"));
-        musPlay.setLooping(true);
-        musPlay.play();
     }
 
     @Override
@@ -133,7 +129,6 @@ public class ScrPlay implements Screen, InputProcessor {
         }
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
             game.updateState(0);
-            musPlay.stop();
         }
 
             batch.begin();
