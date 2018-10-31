@@ -11,5 +11,19 @@ public class SprEnemy extends Sprite {
         setPosition(nX, nY);
         setFlip(false, false);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
 

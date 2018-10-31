@@ -54,7 +54,7 @@ public class ScrPlay implements Screen, InputProcessor {
         musPlay.play();
 
 
-        walkSheet = new Texture(Gdx.files.internal("Sprite Sheet .jpg" ));
+        walkSheet = new Texture(Gdx.files.internal("Sprite Sheet .jpg"));
 
         // Use the split utility method to create a 2D array of TextureRegions. This is
         // possible because this sprite sheet contains frames of equal size and they are
