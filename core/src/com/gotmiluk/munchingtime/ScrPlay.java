@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class ScrPlay implements Screen, InputProcessor {
@@ -40,6 +39,7 @@ public class ScrPlay implements Screen, InputProcessor {
         game = _game;
 
         sprHero = new SprPancake(80, 100, 0, 128);
+        sprEnemy = new SprEnemy(60, 100, 0, 128);
 
 
         batch = new SpriteBatch();
@@ -54,7 +54,7 @@ public class ScrPlay implements Screen, InputProcessor {
         musPlay.play();
 
 
-        walkSheet = new Texture(Gdx.files.internal("Sprite Sheet .jpg"));
+        walkSheet = new Texture("Sprite Sheet .png" );
 
         // Use the split utility method to create a 2D array of TextureRegions. This is
         // possible because this sprite sheet contains frames of equal size and they are
@@ -70,7 +70,7 @@ public class ScrPlay implements Screen, InputProcessor {
             }
         }
 
-        walkAnimation = new Animation<TextureRegion>(1/3f, walkFrames);
+        walkAnimation = new Animation<TextureRegion>(1/7f, walkFrames);
 
         // Instantiate a SpriteBatch for drawing and reset the elapsed animation
         // time to 0
@@ -148,8 +148,8 @@ public class ScrPlay implements Screen, InputProcessor {
             // Get current frame of animation for the current stateTime
             TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
 
-            batch.draw(currentFrame, 50, -200); // Draw current frame at (50, 50)
-
+            //batch.draw(currentFrame, 50, -200); // Draw current frame at (50, 50)
+            batch.draw(currentFrame, 50, 10, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
             if (Gdx.input.isKeyPressed(Keys.A)) {
                 sprHero.setX(sprHero.getX() - 4);
