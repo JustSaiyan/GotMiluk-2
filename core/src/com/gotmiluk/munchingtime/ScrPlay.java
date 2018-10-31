@@ -114,7 +114,8 @@ public class ScrPlay implements Screen, InputProcessor {
         if (nLives > 0) {
             batch.setProjectionMatrix(oc.combined);
             sprHero.draw(batch);
-            batch.end();
+        } else if (nLives == 0) {
+            game.updateState(0);
         }
 
         if (Gdx.input.isKeyPressed(Keys.A)) {
@@ -137,14 +138,13 @@ public class ScrPlay implements Screen, InputProcessor {
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
             game.updateState(0);
         }
-            batch.begin();
             batch.setProjectionMatrix(oc.combined);
             sprEnemy.draw(batch);
-            batch.end();
 
-        font.draw(batch, Integer.toString(nLives), 200, 10);
-
-
+        font.draw(batch, Integer.toString(nLives), 50, 450);
+        String s1 = "Lives:";
+        font.draw(batch, s1, 9, 450);
+        batch.end();
 
         // make sure the bucket stays within the screen bounds
         /*if(bucket.x < 0) bucket.x = 0;
@@ -163,7 +163,7 @@ public class ScrPlay implements Screen, InputProcessor {
         }
 
         if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
-            System.out.println("GitHit");
+            nLives--;
         }
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
