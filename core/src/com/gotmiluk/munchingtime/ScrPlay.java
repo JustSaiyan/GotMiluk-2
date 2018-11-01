@@ -161,7 +161,7 @@ public class ScrPlay implements Screen, InputProcessor {
             TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
 
             //batch.draw(currentFrame, 50, -200); // Draw current frame at (50, 50)
-            batch.draw(currentFrame, 500, 100, 100, 100);
+            batch.draw(currentFrame, 500, 45, 100, 100);
 
             if (Gdx.input.isKeyPressed(Keys.A)) {
                 sprHero.setX(sprHero.getX() - 4);
