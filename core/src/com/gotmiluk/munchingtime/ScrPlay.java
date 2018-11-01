@@ -65,7 +65,7 @@ public class ScrPlay implements Screen, InputProcessor {
         TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is columns 1 is rows
 
 
-        TextureRegion[] walkFrames = new TextureRegion[3 * 1];//how many frames are in teture region array;
+        TextureRegion[] walkFrames = new TextureRegion[3 * 1];//how many frames are in texture region array;
         int index = 0;
         for (int i = 0; i < 1; i++) { //row #
             for (int j = 0; j < 3; j++) { //column #
@@ -196,15 +196,11 @@ public class ScrPlay implements Screen, InputProcessor {
                 n++;
 
             }
+              batch.end();
 
 
 
 
-            batch.end();
-
-
-
-            // make sure the bucket stays within the screen bounds
 
            if (sprHero.getX() < 0) {
               sprHero.setX(0);
