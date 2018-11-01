@@ -147,17 +147,15 @@ public class ScrPlay implements Screen, InputProcessor {
             batch.draw(Background2, xCoordBg2, 0);
             Scroll();
 
-          sprHero.draw(batch);
+            sprHero.draw(batch);
 
 
+            if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
+                System.out.println("GitHit");
+            }
 
-
-        if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
-            System.out.println("GitHit");
-        }
-
-        xCoordBg1 += BACKGROUND_MOVE_SPEED;
-        xCoordBg2 += BACKGROUND_MOVE_SPEED;
+            xCoordBg1 += BACKGROUND_MOVE_SPEED;
+            xCoordBg2 += BACKGROUND_MOVE_SPEED;
 
             stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
 
@@ -165,7 +163,7 @@ public class ScrPlay implements Screen, InputProcessor {
             TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
 
             //batch.draw(currentFrame, 50, -200); // Draw current frame at (50, 50)
-            batch.draw(currentFrame, 500, 100,100 , 100);
+            batch.draw(currentFrame, 500, 100, 100, 100);
 
             if (Gdx.input.isKeyPressed(Keys.A)) {
                 sprHero.setX(sprHero.getX() - 4);
@@ -189,33 +187,31 @@ public class ScrPlay implements Screen, InputProcessor {
                 musPlay.stop();
 
                 //Burger sliding
-                currentFrame.setRegionX(currentFrame.getRegionX()-2);
-                if(currentFrame.getRegionX()==0){
+                currentFrame.setRegionX(currentFrame.getRegionX() - 2);
+                if (currentFrame.getRegionX() == 0) {
                     currentFrame.setRegionX(600);
                 }
                 n++;
 
             }
-              batch.end();
+            batch.end();
 
 
-
-
-
-           if (sprHero.getX() < 0) {
-              sprHero.setX(0);
-           }
-           if (sprHero.getX() > 800 - 64) {
-               sprHero.setX(800 - 64);
-          }
-           if (sprHero.getY() < 0) {
+            if (sprHero.getX() < 0) {
+                sprHero.setX(0);
+            }
+            if (sprHero.getX() > 800 - 64) {
+                sprHero.setX(800 - 64);
+            }
+            if (sprHero.getY() < 0) {
                 sprHero.setY(0);
-          }
-         if (sprHero.getY() > 400) {
-              }
+            }
+            if (sprHero.getY() > 400) {
+            }
 
             xCoordBg1 += BACKGROUND_MOVE_SPEED;
             xCoordBg2 += BACKGROUND_MOVE_SPEED;
+        }
         }
 
         void Scroll () {
