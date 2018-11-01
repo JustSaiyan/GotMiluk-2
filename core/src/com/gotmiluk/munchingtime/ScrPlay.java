@@ -2,12 +2,14 @@ package com.gotmiluk.munchingtime;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -121,12 +123,8 @@ public class ScrPlay implements Screen, InputProcessor {
             return false;
         }
 
-        if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
-            game.updateState(0);
-
-
-        @Override
-        public void show (); {
+       @Override
+        public void show () {
             oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
             oc.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
             oc.update();
@@ -212,7 +210,7 @@ public class ScrPlay implements Screen, InputProcessor {
             xCoordBg1 += BACKGROUND_MOVE_SPEED;
             xCoordBg2 += BACKGROUND_MOVE_SPEED;
         }
-        }
+
 
         void Scroll () {
             if (xCoordBg1 == 1280) {
