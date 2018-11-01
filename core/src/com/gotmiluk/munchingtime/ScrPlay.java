@@ -11,6 +11,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import java.util.Random;
 
 public class ScrPlay implements Screen, InputProcessor {
     SpriteBatch batch;
@@ -26,6 +27,8 @@ public class ScrPlay implements Screen, InputProcessor {
     Animation<TextureRegion> walkAnimation; // Must declare frame type (TextureRegion)
     Texture walkSheet;
     SpriteBatch spriteBatch;
+    Random rand1 = new Random();
+    int n = rand1.nextInt(5000) + 1;
 
     // A variable for tracking elapsed time for the animation
     float stateTime;
@@ -149,7 +152,7 @@ public class ScrPlay implements Screen, InputProcessor {
             TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
 
             //batch.draw(currentFrame, 50, -200); // Draw current frame at (50, 50)
-            batch.draw(currentFrame, 50, 10, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            batch.draw(currentFrame, 500, 100,100 , 100);
 
             if (Gdx.input.isKeyPressed(Keys.A)) {
                 sprHero.setX(sprHero.getX() - 4);
@@ -171,6 +174,14 @@ public class ScrPlay implements Screen, InputProcessor {
             if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
                 game.updateState(0);
                 musPlay.stop();
+
+                //Burger sliding
+                currentFrame.setRegionX(currentFrame.getRegionX()-2);
+                if(currentFrame.getRegionX()==0){
+                    currentFrame.setRegionX(600);
+                }
+                n++;
+
             }
 
 
