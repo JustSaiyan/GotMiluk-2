@@ -73,7 +73,7 @@ public class ScrPlay implements Screen, InputProcessor {
             }
         }
 
-        walkAnimation = new Animation<TextureRegion>(1/7f, walkFrames);
+        walkAnimation = new Animation<TextureRegion>(1/5f, walkFrames);
 
         // Instantiate a SpriteBatch for drawing and reset the elapsed animation
         // time to 0
