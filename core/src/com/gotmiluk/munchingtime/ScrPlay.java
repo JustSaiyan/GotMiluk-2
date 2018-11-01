@@ -26,7 +26,6 @@ public class ScrPlay implements Screen, InputProcessor {
     final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
     Animation<TextureRegion> walkAnimation; // Must declare frame type (TextureRegion)
     Texture walkSheet;
-    SpriteBatch spriteBatch;
     Random rand1 = new Random();
     int n = rand1.nextInt(5000) + 1;
 
@@ -51,14 +50,11 @@ public class ScrPlay implements Screen, InputProcessor {
         xMax = 1280;
         xCoordBg1 = 0;
         xCoordBg2 = -1280;
-<<<<<<< HEAD
-    }
-=======
 
         musPlay = Gdx.audio.newMusic(Gdx.files.internal("MMX.mp3"));
         musPlay.setLooping(true);
         musPlay.play();
->>>>>>> Animation
+
 
 
         walkSheet = new Texture("Sprite Sheet .png" );
@@ -124,13 +120,13 @@ public class ScrPlay implements Screen, InputProcessor {
         public boolean scrolled ( int amount){
             return false;
         }
-<<<<<<< HEAD
+
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
             game.updateState(0);
-=======
+
 
         @Override
-        public void show () {
+        public void show (); {
             oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
             oc.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
             oc.update();
@@ -138,7 +134,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
             Gdx.input.setInputProcessor(this);
 
->>>>>>> Animation
+
         }
 
         @Override
@@ -155,15 +151,14 @@ public class ScrPlay implements Screen, InputProcessor {
 
 
 
-<<<<<<< HEAD
+
         if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             System.out.println("GitHit");
         }
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
-    }
-=======
+
             stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
 
             // Get current frame of animation for the current stateTime
@@ -206,7 +201,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
 
             batch.end();
->>>>>>> Animation
+
 
 
             // make sure the bucket stays within the screen bounds
