@@ -28,8 +28,7 @@ public class ScrPlay implements Screen, InputProcessor {
     final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
     Animation<TextureRegion> walkAnimation; // Must declare frame type (TextureRegion)
     Texture walkSheet;
-    Random rand1 = new Random();
-    int n = rand1.nextInt(5000) + 1;
+
 
     // A variable for tracking elapsed time for the animation
     float stateTime;
@@ -43,7 +42,7 @@ public class ScrPlay implements Screen, InputProcessor {
         game = _game;
 
         sprHero = new SprPancake(80, 100, 0, 128);
-        sprEnemy = new SprEnemy(60, 100, 0, 128);
+
 
 
         batch = new SpriteBatch();
@@ -83,165 +82,165 @@ public class ScrPlay implements Screen, InputProcessor {
         stateTime = 0f;
     }
 
-        @Override
-        public boolean keyDown ( int keycode){
-            return false;
-        }
+    @Override
+    public boolean keyDown ( int keycode){
+        return false;
+    }
 
-        @Override
-        public boolean keyUp ( int keycode){
-            return false;
-        }
+    @Override
+    public boolean keyUp ( int keycode){
+        return false;
+    }
 
-        @Override
-        public boolean keyTyped ( char character){
-            return false;
-        }
+    @Override
+    public boolean keyTyped ( char character){
+        return false;
+    }
 
-        @Override
-        public boolean touchDown ( int screenX, int screenY, int pointer, int button){
-            return false;
-        }
+    @Override
+    public boolean touchDown ( int screenX, int screenY, int pointer, int button){
+        return false;
+    }
 
-        @Override
-        public boolean touchUp ( int screenX, int screenY, int pointer, int button){
-            return false;
-        }
+    @Override
+    public boolean touchUp ( int screenX, int screenY, int pointer, int button){
+        return false;
+    }
 
-        @Override
-        public boolean touchDragged ( int screenX, int screenY, int pointer){
-            return false;
-        }
+    @Override
+    public boolean touchDragged ( int screenX, int screenY, int pointer){
+        return false;
+    }
 
-        @Override
-        public boolean mouseMoved ( int screenX, int screenY){
-            return false;
-        }
+    @Override
+    public boolean mouseMoved ( int screenX, int screenY){
+        return false;
+    }
 
-        @Override
-        public boolean scrolled ( int amount){
-            return false;
-        }
+    @Override
+    public boolean scrolled ( int amount){
+        return false;
+    }
 
-       @Override
-        public void show () {
-            oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-            oc.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-            oc.update();
-            batch = new SpriteBatch();
+    @Override
+    public void show () {
+        oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        oc.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        oc.update();
+        batch = new SpriteBatch();
 
-            Gdx.input.setInputProcessor(this);
-
-
-        }
-
-        @Override
-        public void render ( float delta){
-            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-            oc.update();
-            batch.begin();
-            batch.setProjectionMatrix(oc.combined);
-            batch.draw(Background1, xCoordBg1, 0);
-            batch.draw(Background2, xCoordBg2, 0);
-            Scroll();
-
-            sprHero.draw(batch);
+        Gdx.input.setInputProcessor(this);
 
 
-            if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
-                System.out.println("GitHit");
-            }
+    }
 
-            xCoordBg1 += BACKGROUND_MOVE_SPEED;
-            xCoordBg2 += BACKGROUND_MOVE_SPEED;
+    @Override
+    public void render ( float delta){
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+        oc.update();
+        batch.begin();
+        batch.setProjectionMatrix(oc.combined);
+        batch.draw(Background1, xCoordBg1, 0);
+        batch.draw(Background2, xCoordBg2, 0);
+        Scroll();
 
-            stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
-
-            // Get current frame of animation for the current stateTime
-            TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
-
-            //batch.draw(currentFrame, 50, -200); // Draw current frame at (50, 50)
-            batch.draw(currentFrame, 500, 45, 100, 100);
-
-            if (Gdx.input.isKeyPressed(Keys.A)) {
-                sprHero.setX(sprHero.getX() - 4);
-
-            }
-            if (Gdx.input.isKeyPressed(Keys.W)) {
-                sprHero.setY(sprHero.getY() + 4);
-                dYspeedM = 10;
-                sprHero.setY(sprHero.getY() + 8);
-            }
-            if (sprHero.getY() > 50) {
-                dYspeedM -= 1;
-                sprHero.translateY((float) dYspeedM);
-
-            }
-            if (Gdx.input.isKeyPressed(Keys.D)) {
-                sprHero.setX(sprHero.getX() + 4);
-            }
-            if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
-                game.updateState(0);
-                musPlay.stop();
+        sprHero.draw(batch);
 
 
+        //  if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
+        // System.out.println("GitHit");
+        //  }
 
-            }
-            batch.end();
+        xCoordBg1 += BACKGROUND_MOVE_SPEED;
+        xCoordBg2 += BACKGROUND_MOVE_SPEED;
 
+        stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
 
-            if (sprHero.getX() < 0) {
-                sprHero.setX(0);
-            }
-            if (sprHero.getX() > 800 - 64) {
-                sprHero.setX(800 - 64);
-            }
-            if (sprHero.getY() < 0) {
-                sprHero.setY(0);
-            }
-            if (sprHero.getY() > 400) {
-            }
+        // Get current frame of animation for the current stateTime
+        TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
 
-            xCoordBg1 += BACKGROUND_MOVE_SPEED;
-            xCoordBg2 += BACKGROUND_MOVE_SPEED;
-        }
+        //batch.draw(currentFrame, 50, -200); // Draw current frame at (50, 50)
+        batch.draw(currentFrame, 500, 45, 100, 100);
 
-
-        void Scroll () {
-            if (xCoordBg1 == 1280) {
-                xCoordBg1 = -1280;
-            }
-            if (xCoordBg2 == 1280) {
-                xCoordBg2 = -1280;
-            }
-        }
-
-        @Override
-        public void resize ( int width, int height){
+        if (Gdx.input.isKeyPressed(Keys.A)) {
+            sprHero.setX(sprHero.getX() - 4);
 
         }
-
-        @Override
-        public void pause () {
+        if (Gdx.input.isKeyPressed(Keys.W)) {
+            sprHero.setY(sprHero.getY() + 4);
+            dYspeedM = 10;
+            sprHero.setY(sprHero.getY() + 8);
+        }
+        if (sprHero.getY() > 50) {
+            dYspeedM -= 1;
+            sprHero.translateY((float) dYspeedM);
 
         }
+        if (Gdx.input.isKeyPressed(Keys.D)) {
+            sprHero.setX(sprHero.getX() + 4);
+        }
+        if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+            game.updateState(0);
+            musPlay.stop();
 
-        @Override
-        public void resume () {
+
 
         }
+        batch.end();
 
-        @Override
-        public void hide () {
 
+        if (sprHero.getX() < 0) {
+            sprHero.setX(0);
+        }
+        if (sprHero.getX() > 800 - 64) {
+            sprHero.setX(800 - 64);
+        }
+        if (sprHero.getY() < 0) {
+            sprHero.setY(0);
+        }
+        if (sprHero.getY() > 400) {
         }
 
-        @Override
-        public void dispose () {
-            batch.dispose();
-            Background1.dispose();
-            Background2.dispose();
-            batch.dispose();
+        xCoordBg1 += BACKGROUND_MOVE_SPEED;
+        xCoordBg2 += BACKGROUND_MOVE_SPEED;
+    }
+
+
+    void Scroll () {
+        if (xCoordBg1 == 1280) {
+            xCoordBg1 = -1280;
+        }
+        if (xCoordBg2 == 1280) {
+            xCoordBg2 = -1280;
         }
     }
+
+    @Override
+    public void resize ( int width, int height){
+
+    }
+
+    @Override
+    public void pause () {
+
+    }
+
+    @Override
+    public void resume () {
+
+    }
+
+    @Override
+    public void hide () {
+
+    }
+
+    @Override
+    public void dispose () {
+        batch.dispose();
+        Background1.dispose();
+        Background2.dispose();
+        batch.dispose();
+    }
+}
 
