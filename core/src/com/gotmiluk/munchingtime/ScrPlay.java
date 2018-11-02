@@ -184,12 +184,7 @@ public class ScrPlay implements Screen, InputProcessor {
                 game.updateState(0);
                 musPlay.stop();
 
-                //Burger sliding
-                currentFrame.setRegionX(currentFrame.getRegionX() - 2);
-                if (currentFrame.getRegionX() == 0) {
-                    currentFrame.setRegionX(600);
-                }
-                n++;
+
 
             }
             batch.end();
