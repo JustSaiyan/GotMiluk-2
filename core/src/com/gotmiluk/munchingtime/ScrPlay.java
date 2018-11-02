@@ -22,6 +22,8 @@ public class ScrPlay implements Screen, InputProcessor {
     OrthographicCamera oc;
     Texture Background1, Background2;
     private int nLives;
+    int nX;
+    int nY;
     private BitmapFont font;
     double dYspeedM;
     int xMax, xCoordBg1, xCoordBg2;
@@ -115,6 +117,11 @@ public class ScrPlay implements Screen, InputProcessor {
             batch.setProjectionMatrix(oc.combined);
             sprHero.draw(batch);
         } else if (nLives == 0) {
+            sprHero.setX(0);
+            sprHero.setY(128);
+            nLives++;
+            nLives++;
+            nLives++;
             game.updateState(0);
         }
 
@@ -164,6 +171,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
         if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             nLives--;
+
         }
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
