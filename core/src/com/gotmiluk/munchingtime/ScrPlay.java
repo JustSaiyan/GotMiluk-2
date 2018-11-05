@@ -1,19 +1,19 @@
 package com.gotmiluk.munchingtime;
 
-        import com.badlogic.gdx.*;
-        import com.badlogic.gdx.InputProcessor;
-        import com.badlogic.gdx.Input;
-        import com.badlogic.gdx.Screen;
-        import com.badlogic.gdx.Input.Keys;
-        import com.badlogic.gdx.graphics.GL20;
-        import com.badlogic.gdx.graphics.OrthographicCamera;
-        import com.badlogic.gdx.graphics.Texture;
-        import com.badlogic.gdx.audio.Music;
-        import com.badlogic.gdx.graphics.g2d.Sprite;
-        import com.badlogic.gdx.graphics.g2d.Animation;
-        import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-        import com.badlogic.gdx.graphics.g2d.TextureRegion;
-        import java.util.Random;
+import com.badlogic.gdx.*;
+import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import java.util.Random;
 
 public class ScrPlay implements Screen, InputProcessor {
     SpriteBatch batch;
