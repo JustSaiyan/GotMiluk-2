@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -23,6 +24,10 @@ public class ScrPlay implements Screen, InputProcessor {
     GamMunch game;
     OrthographicCamera oc;
     Texture Background1, Background2;
+    private int nLives;
+    int nX;
+    int nY;
+    private BitmapFont font;
     double dYspeedM;
     int xMax, xCoordBg1, xCoordBg2;
     final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
@@ -41,9 +46,11 @@ public class ScrPlay implements Screen, InputProcessor {
 
         batch = new SpriteBatch();
         game = _game;
+        nLives = 3;
+        font = new BitmapFont();
 
         sprHero = new SprPancake(80, 100, 0, 128);
-        sprEnemy = new SprEnemy(60, 100, 0, 128);
+        sprEnemy = new SprEnemy(60, 100, 500, 45);
 
 
         batch = new SpriteBatch();
@@ -144,7 +151,6 @@ public class ScrPlay implements Screen, InputProcessor {
         batch.draw(Background1, xCoordBg1, 0);
         batch.draw(Background2, xCoordBg2, 0);
         Scroll();
-
         sprHero.draw(batch);
 
 
@@ -162,6 +168,17 @@ public class ScrPlay implements Screen, InputProcessor {
 
         //batch.draw(currentFrame, 50, -200); // Draw current frame at (50, 50)
         batch.draw(currentFrame, 500, 45, 100, 100);
+        if (nLives > 0) {
+            batch.setProjectionMatrix(oc.combined);
+            sprHero.draw(batch);
+        } else if (nLives == 0) {
+            sprHero.setX(0);
+            sprHero.setY(128);
+            nLives++;
+            nLives++;
+            nLives++;
+            game.updateState(0);
+        }
 
         if (Gdx.input.isKeyPressed(Keys.A)) {
             sprHero.setX(sprHero.getX() - 4);
@@ -175,7 +192,6 @@ public class ScrPlay implements Screen, InputProcessor {
         if (sprHero.getY() > 50) {
             dYspeedM -= 1;
             sprHero.translateY((float) dYspeedM);
-
         }
         if (Gdx.input.isKeyPressed(Keys.D)) {
             sprHero.setX(sprHero.getX() + 4);
@@ -183,12 +199,14 @@ public class ScrPlay implements Screen, InputProcessor {
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
             game.updateState(0);
             musPlay.stop();
-
-
-
         }
-        batch.end();
+            batch.setProjectionMatrix(oc.combined);
+            sprEnemy.draw(batch);
 
+        font.draw(batch, Integer.toString(nLives), 50, 450);
+        String s1 = "Lives:";
+        font.draw(batch, s1, 9, 450);
+        batch.end();
 
         if (sprHero.getX() < 0) {
             sprHero.setX(0);
@@ -200,6 +218,11 @@ public class ScrPlay implements Screen, InputProcessor {
             sprHero.setY(0);
         }
         if (sprHero.getY() > 400) {
+            sprHero.setY(400);
+        }
+
+        if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
+            nLives--;
         }
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
