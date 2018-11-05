@@ -2,14 +2,12 @@ package com.gotmiluk.munchingtime;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -148,9 +146,9 @@ public class ScrPlay implements Screen, InputProcessor {
         sprHero.draw(batch);
 
 
-        if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
+       // if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             System.out.println("GitHit");
-        }
+       // }
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
