@@ -155,7 +155,6 @@ public class ScrPlay implements Screen, InputProcessor {
         sprHero.draw(batch);
 
 
-     
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
@@ -222,6 +221,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
         if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             nLives--;
+            System.out.println("GitHit");
         }
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
