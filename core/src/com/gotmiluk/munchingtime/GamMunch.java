@@ -18,12 +18,12 @@ public class GamMunch extends Game {
 	public void updateState(int _nScreen) {
 		nScreen = _nScreen;
 		if (nScreen == 0) {
-//			musMenu = Gdx.audio.newMusic(Gdx.files.internal("Rap_God.mp3"));
-//			musMenu.setLooping(true);
-//			musMenu.play();
+			musMenu = Gdx.audio.newMusic(Gdx.files.internal("Rap_God.mp3"));
+			musMenu.setLooping(true);
+			musMenu.play();
 			setScreen(scrMenu);
 		} else if (nScreen == 1) {
-//			musMenu.stop();
+			musMenu.stop();
 //			musPlay = Gdx.audio.newMusic(Gdx.files.internal("MMX.mp3"));
 //			musPlay.setLooping(true);
 //			musPlay.play();
