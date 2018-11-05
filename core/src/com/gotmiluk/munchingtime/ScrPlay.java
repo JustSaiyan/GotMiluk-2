@@ -1,19 +1,19 @@
 package com.gotmiluk.munchingtime;
 
-import com.badlogic.gdx.*;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import java.util.Random;
+        import com.badlogic.gdx.*;
+        import com.badlogic.gdx.InputProcessor;
+        import com.badlogic.gdx.Input;
+        import com.badlogic.gdx.Screen;
+        import com.badlogic.gdx.Input.Keys;
+        import com.badlogic.gdx.graphics.GL20;
+        import com.badlogic.gdx.graphics.OrthographicCamera;
+        import com.badlogic.gdx.graphics.Texture;
+        import com.badlogic.gdx.audio.Music;
+        import com.badlogic.gdx.graphics.g2d.Sprite;
+        import com.badlogic.gdx.graphics.g2d.Animation;
+        import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+        import com.badlogic.gdx.graphics.g2d.TextureRegion;
+        import java.util.Random;
 
 public class ScrPlay implements Screen, InputProcessor {
     SpriteBatch batch;
@@ -83,165 +83,165 @@ public class ScrPlay implements Screen, InputProcessor {
         stateTime = 0f;
     }
 
-        @Override
-        public boolean keyDown ( int keycode){
-            return false;
+    @Override
+    public boolean keyDown ( int keycode){
+        return false;
+    }
+
+    @Override
+    public boolean keyUp ( int keycode){
+        return false;
+    }
+
+    @Override
+    public boolean keyTyped ( char character){
+        return false;
+    }
+
+    @Override
+    public boolean touchDown ( int screenX, int screenY, int pointer, int button){
+        return false;
+    }
+
+    @Override
+    public boolean touchUp ( int screenX, int screenY, int pointer, int button){
+        return false;
+    }
+
+    @Override
+    public boolean touchDragged ( int screenX, int screenY, int pointer){
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved ( int screenX, int screenY){
+        return false;
+    }
+
+    @Override
+    public boolean scrolled ( int amount){
+        return false;
+    }
+
+    @Override
+    public void show () {
+        oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        oc.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        oc.update();
+        batch = new SpriteBatch();
+
+        Gdx.input.setInputProcessor(this);
+
+
+    }
+
+    @Override
+    public void render ( float delta){
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+        oc.update();
+        batch.begin();
+        batch.setProjectionMatrix(oc.combined);
+        batch.draw(Background1, xCoordBg1, 0);
+        batch.draw(Background2, xCoordBg2, 0);
+        Scroll();
+
+        sprHero.draw(batch);
+
+
+        if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
+            System.out.println("GitHit");
         }
 
-        @Override
-        public boolean keyUp ( int keycode){
-            return false;
+        xCoordBg1 += BACKGROUND_MOVE_SPEED;
+        xCoordBg2 += BACKGROUND_MOVE_SPEED;
+
+        stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
+
+        // Get current frame of animation for the current stateTime
+        TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
+
+        //batch.draw(currentFrame, 50, -200); // Draw current frame at (50, 50)
+        batch.draw(currentFrame, 500, 45, 100, 100);
+
+        if (Gdx.input.isKeyPressed(Keys.A)) {
+            sprHero.setX(sprHero.getX() - 4);
+
         }
-
-        @Override
-        public boolean keyTyped ( char character){
-            return false;
+        if (Gdx.input.isKeyPressed(Keys.W)) {
+            sprHero.setY(sprHero.getY() + 4);
+            dYspeedM = 10;
+            sprHero.setY(sprHero.getY() + 8);
         }
+        if (sprHero.getY() > 50) {
+            dYspeedM -= 1;
+            sprHero.translateY((float) dYspeedM);
 
-        @Override
-        public boolean touchDown ( int screenX, int screenY, int pointer, int button){
-            return false;
         }
-
-        @Override
-        public boolean touchUp ( int screenX, int screenY, int pointer, int button){
-            return false;
+        if (Gdx.input.isKeyPressed(Keys.D)) {
+            sprHero.setX(sprHero.getX() + 4);
         }
+        if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+            game.updateState(0);
+            musPlay.stop();
 
-        @Override
-        public boolean touchDragged ( int screenX, int screenY, int pointer){
-            return false;
-        }
-
-        @Override
-        public boolean mouseMoved ( int screenX, int screenY){
-            return false;
-        }
-
-        @Override
-        public boolean scrolled ( int amount){
-            return false;
-        }
-
-       @Override
-        public void show () {
-            oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-            oc.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-            oc.update();
-            batch = new SpriteBatch();
-
-            Gdx.input.setInputProcessor(this);
 
 
         }
-
-        @Override
-        public void render ( float delta){
-            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-            oc.update();
-            batch.begin();
-            batch.setProjectionMatrix(oc.combined);
-            batch.draw(Background1, xCoordBg1, 0);
-            batch.draw(Background2, xCoordBg2, 0);
-            Scroll();
-
-            sprHero.draw(batch);
+        batch.end();
 
 
-            if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
-                System.out.println("GitHit");
-            }
-
-            xCoordBg1 += BACKGROUND_MOVE_SPEED;
-            xCoordBg2 += BACKGROUND_MOVE_SPEED;
-
-            stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
-
-            // Get current frame of animation for the current stateTime
-            TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
-
-            //batch.draw(currentFrame, 50, -200); // Draw current frame at (50, 50)
-            batch.draw(currentFrame, 500, 45, 100, 100);
-
-            if (Gdx.input.isKeyPressed(Keys.A)) {
-                sprHero.setX(sprHero.getX() - 4);
-
-            }
-            if (Gdx.input.isKeyPressed(Keys.W)) {
-                sprHero.setY(sprHero.getY() + 4);
-                dYspeedM = 10;
-                sprHero.setY(sprHero.getY() + 8);
-            }
-            if (sprHero.getY() > 50) {
-                dYspeedM -= 1;
-                sprHero.translateY((float) dYspeedM);
-
-            }
-            if (Gdx.input.isKeyPressed(Keys.D)) {
-                sprHero.setX(sprHero.getX() + 4);
-            }
-            if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
-                game.updateState(0);
-                musPlay.stop();
-
-
-
-            }
-            batch.end();
-
-
-            if (sprHero.getX() < 0) {
-                sprHero.setX(0);
-            }
-            if (sprHero.getX() > 800 - 64) {
-                sprHero.setX(800 - 64);
-            }
-            if (sprHero.getY() < 0) {
-                sprHero.setY(0);
-            }
-            if (sprHero.getY() > 400) {
-            }
-
-            xCoordBg1 += BACKGROUND_MOVE_SPEED;
-            xCoordBg2 += BACKGROUND_MOVE_SPEED;
+        if (sprHero.getX() < 0) {
+            sprHero.setX(0);
+        }
+        if (sprHero.getX() > 800 - 64) {
+            sprHero.setX(800 - 64);
+        }
+        if (sprHero.getY() < 0) {
+            sprHero.setY(0);
+        }
+        if (sprHero.getY() > 400) {
         }
 
+        xCoordBg1 += BACKGROUND_MOVE_SPEED;
+        xCoordBg2 += BACKGROUND_MOVE_SPEED;
+    }
 
-        void Scroll () {
-            if (xCoordBg1 == 1280) {
-                xCoordBg1 = -1280;
-            }
-            if (xCoordBg2 == 1280) {
-                xCoordBg2 = -1280;
-            }
+
+    void Scroll () {
+        if (xCoordBg1 == 1280) {
+            xCoordBg1 = -1280;
         }
-
-        @Override
-        public void resize ( int width, int height){
-
-        }
-
-        @Override
-        public void pause () {
-
-        }
-
-        @Override
-        public void resume () {
-
-        }
-
-        @Override
-        public void hide () {
-
-        }
-
-        @Override
-        public void dispose () {
-            batch.dispose();
-            Background1.dispose();
-            Background2.dispose();
-            batch.dispose();
+        if (xCoordBg2 == 1280) {
+            xCoordBg2 = -1280;
         }
     }
+
+    @Override
+    public void resize ( int width, int height){
+
+    }
+
+    @Override
+    public void pause () {
+
+    }
+
+    @Override
+    public void resume () {
+
+    }
+
+    @Override
+    public void hide () {
+
+    }
+
+    @Override
+    public void dispose () {
+        batch.dispose();
+        Background1.dispose();
+        Background2.dispose();
+        batch.dispose();
+    }
+}
 
