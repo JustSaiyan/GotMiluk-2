@@ -171,7 +171,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
         if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             nLives--;
-
+            
         }
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
