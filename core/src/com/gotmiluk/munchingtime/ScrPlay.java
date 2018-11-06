@@ -26,8 +26,8 @@ public class ScrPlay implements Screen, InputProcessor {
     OrthographicCamera oc;
     Texture Background1, Background2;
     private int nLives;
-    int nX;
-    int nY;
+    boolean x=false;
+    boolean upPressed;
     private BitmapFont font;
     double dYspeedM;
     int xMax, xCoordBg1, xCoordBg2;
@@ -92,13 +92,24 @@ public class ScrPlay implements Screen, InputProcessor {
     }
 
     @Override
-    public boolean keyDown ( int keycode){
-        return false;
+    public boolean keyDown ( int keycode) {
+        switch (keycode) {
+            case Keys.W:
+                upPressed = true;
+                break;
+
+        }
+        return true;
     }
 
     @Override
-    public boolean keyUp ( int keycode){
-        return false;
+    public boolean keyUp ( int keycode) {
+        switch (keycode) {
+            case Keys.W:
+                upPressed = false;
+                break;
+        }
+        return true;
     }
 
     @Override
@@ -185,7 +196,7 @@ public class ScrPlay implements Screen, InputProcessor {
         if (Gdx.input.isKeyPressed(Keys.W)) {
             sprHero.setY(sprHero.getY() + 3);
             dYspeedM = 2;
-            sprHero.setY(sprHero.getY()+ 1 );
+            sprHero.setY(sprHero.getY()+ 3 );
 
         }
         if (sprHero.getY() > 50) {
