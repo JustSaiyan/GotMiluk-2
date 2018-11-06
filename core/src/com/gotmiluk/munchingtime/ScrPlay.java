@@ -93,23 +93,12 @@ public class ScrPlay implements Screen, InputProcessor {
 
     @Override
     public boolean keyDown ( int keycode) {
-        switch (keycode) {
-            case Keys.W:
-                upPressed = true;
-                break;
-
-        }
-        return true;
+   return false;
     }
 
     @Override
     public boolean keyUp ( int keycode) {
-        switch (keycode) {
-            case Keys.W:
-                upPressed = false;
-                break;
-        }
-        return true;
+   return false;
     }
 
     @Override
