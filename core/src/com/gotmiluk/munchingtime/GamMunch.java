@@ -24,9 +24,9 @@ public class GamMunch extends Game {
 			setScreen(scrMenu);
 		} else if (nScreen == 1) {
 			musMenu.stop();
-//			musPlay = Gdx.audio.newMusic(Gdx.files.internal("MMX.mp3"));
-//			musPlay.setLooping(true);
-//			musPlay.play();
+			musPlay = Gdx.audio.newMusic(Gdx.files.internal("MMX.mp3"));
+			musPlay.setLooping(true);
+			musPlay.play();
 			setScreen(scrPlay);
 		}
 	}

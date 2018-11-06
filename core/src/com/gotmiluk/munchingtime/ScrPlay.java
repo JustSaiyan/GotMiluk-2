@@ -60,13 +60,6 @@ public class ScrPlay implements Screen, InputProcessor {
         xMax = 1280;
         xCoordBg1 = 0;
         xCoordBg2 = -1280;
-
-        musPlay = Gdx.audio.newMusic(Gdx.files.internal("MMX.mp3"));
-        musPlay.setLooping(true);
-        musPlay.play();
-
-
-
         walkSheet = new Texture("Sprite Sheet .png" );
 
         // Use the split utility method to create a 2D array of TextureRegions. This is
