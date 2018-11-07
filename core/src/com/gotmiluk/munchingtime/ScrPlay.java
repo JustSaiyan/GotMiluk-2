@@ -128,7 +128,7 @@ public class ScrPlay implements Screen, InputProcessor {
         batch.draw(Background2, xCoordBg2, 0);
         Scroll();
         sprHero.draw(batch);
-        sprEnemy.draw(batch);
+
 
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;

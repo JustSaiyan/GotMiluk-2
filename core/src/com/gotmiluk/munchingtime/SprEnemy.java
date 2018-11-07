@@ -33,7 +33,7 @@ public class SprEnemy extends Sprite {
              walkFrames[index++] = tmp[i][j];
          }
      }
-     walkAnimation = new Animation<TextureRegion>(1 / 5f, walkFrames);
+     walkAnimation = new Animation<TextureRegion>(1 / 4f, walkFrames);
 
      // Instantiate a SpriteBatch for drawing and reset the elapsed animation
      // time to 0
@@ -43,12 +43,11 @@ public class SprEnemy extends Sprite {
  }
 
     public void draw(Batch batch) {
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+
         stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
 
         // Get current frame of animation for the current stateTime
         TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
 
-        batch.draw(currentFrame, 50, -200); // Draw current frame at (50, 50)
-
+        batch.draw(currentFrame, 500, 45, 100, 100);
     }}
