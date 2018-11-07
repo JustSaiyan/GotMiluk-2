@@ -32,14 +32,8 @@ public class ScrPlay implements Screen, InputProcessor {
     int xMax, xCoordBg1, xCoordBg2;
     final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
 
-    Random rand1 = new Random();
-    int n = rand1.nextInt(5000) + 1;
-
-    // A variable for tracking elapsed time for the animation
-    float stateTime;
 
 
-    // private Sprite sprHero; // a Sprite allows you to get the bounding rectangle
 
     public ScrPlay(GamMunch _game) {
 
