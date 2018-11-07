@@ -14,15 +14,15 @@ public class SprEnemy extends Sprite {
     // A variable for tracking elapsed time for the animation
     float stateTime;
 //    TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is columns 1 is rows
+float elapsedTime, playablePosition;
+float currentPosition = 0;
 
 
 
 
-
- public SprEnemy(int nW, int nH, int nX, int nY) {
+    public SprEnemy(int nW, int nH, int nX, int nY) {
      walkSheet = new Texture("Sprite Sheet .png");
      TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is columns 1 is rows
-
      setSize(nW, nH);
      setPosition(nX, nY);
      setFlip(false, false);
@@ -50,4 +50,10 @@ public class SprEnemy extends Sprite {
         TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
 
         batch.draw(currentFrame, 500, 45, 100, 100);
+        elapsedTime += (Gdx.graphics.getDeltaTime()) * 2;
+       playablePosition = (Gdx.graphics.getWidth()) / 2 - 200;
+// float currentPosition = 0; // <-- this needs set outside ouside of the render method.
+        currentPosition += 10;
+        batch.draw(walkAnimation.getKeyFrame(elapsedTime), currentPosition, 0, 100, 300);
+
     }}

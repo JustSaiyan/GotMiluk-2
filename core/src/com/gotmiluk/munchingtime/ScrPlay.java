@@ -128,8 +128,7 @@ public class ScrPlay implements Screen, InputProcessor {
         batch.draw(Background2, xCoordBg2, 0);
         Scroll();
         sprHero.draw(batch);
-
-
+        sprEnemy.draw(batch);
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
@@ -137,7 +136,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
         if (nLives > 0) {
             batch.setProjectionMatrix(oc.combined);
-            sprHero.draw(batch);
+
         } else if (nLives == 0) {
             sprHero.setX(0);
             sprHero.setY(128);
@@ -168,8 +167,11 @@ public class ScrPlay implements Screen, InputProcessor {
             game.updateState(0);
             musPlay.stop();
         }
+
+
+
         batch.setProjectionMatrix(oc.combined);
-        sprEnemy.draw(batch);
+
 
         font.draw(batch, Integer.toString(nLives), 50, 450);
         String s1 = "Lives:";
@@ -188,6 +190,8 @@ public class ScrPlay implements Screen, InputProcessor {
         if (sprHero.getY() > 400) {
             sprHero.setY(400);
         }
+
+
         if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             nLives--;
         }
