@@ -2,11 +2,7 @@ package com.gotmiluk.munchingtime;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
-import com.gotmiluk.munchingtime.ScrPlay;
-import com.gotmiluk.munchingtime.ScrMenu;
-
 
 public class GamMunch extends Game {
 	ScrPlay scrPlay;
@@ -18,7 +14,7 @@ public class GamMunch extends Game {
 	public void updateState(int _nScreen) {
 		nScreen = _nScreen;
 		if (nScreen == 0) {
-			musMenu = Gdx.audio.newMusic(Gdx.files.internal("Rap_God.mp3"));
+			musMenu = Gdx.audio.newMusic(Gdx.files.internal("MMX Menu.mp3"));
 			musMenu.setLooping(true);
 			musMenu.play();
 			setScreen(scrMenu);
