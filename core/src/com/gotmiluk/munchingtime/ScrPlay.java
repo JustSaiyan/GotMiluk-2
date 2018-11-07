@@ -1,29 +1,25 @@
 package com.gotmiluk.munchingtime;
 
 import com.badlogic.gdx.*;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import java.util.concurrent.TimeUnit;
+import java.lang.InterruptedException;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class ScrPlay implements Screen, InputProcessor {
+public class ScrPlay implements Screen, InputProcessor{
     SpriteBatch batch;
     SprPancake sprHero;
     SprEnemy sprEnemy;
-    Music musPlay;
     GamMunch game;
     OrthographicCamera oc;
     Texture Background1, Background2;
     private int nLives;
-    int nX;
-    int nY;
     private BitmapFont font;
     double dYspeedM;
     int xMax, xCoordBg1, xCoordBg2;
@@ -171,7 +167,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
         if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             nLives--;
-            
+            TimeUnit.SECONDS.sleep(2);
         }
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
