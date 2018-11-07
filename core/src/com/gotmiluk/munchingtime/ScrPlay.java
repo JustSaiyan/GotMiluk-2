@@ -12,7 +12,6 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 
-
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.Random;
@@ -26,7 +25,7 @@ public class ScrPlay implements Screen, InputProcessor {
     OrthographicCamera oc;
     Texture Background1, Background2;
     private int nLives;
-    boolean x=false;
+    boolean x = false;
 
     private BitmapFont font;
     double dYspeedM;
@@ -66,48 +65,49 @@ public class ScrPlay implements Screen, InputProcessor {
 
 
     }
-    @Override
-    public boolean keyDown ( int keycode) {
-   return false;
-    }
 
     @Override
-    public boolean keyUp ( int keycode) {
-   return false;
-    }
-
-    @Override
-    public boolean keyTyped ( char character){
+    public boolean keyDown(int keycode) {
         return false;
     }
 
     @Override
-    public boolean touchDown ( int screenX, int screenY, int pointer, int button){
+    public boolean keyUp(int keycode) {
         return false;
     }
 
     @Override
-    public boolean touchUp ( int screenX, int screenY, int pointer, int button){
+    public boolean keyTyped(char character) {
         return false;
     }
 
     @Override
-    public boolean touchDragged ( int screenX, int screenY, int pointer){
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         return false;
     }
 
     @Override
-    public boolean mouseMoved ( int screenX, int screenY){
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         return false;
     }
 
     @Override
-    public boolean scrolled ( int amount){
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
         return false;
     }
 
     @Override
-    public void show () {
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
+    }
+
+    @Override
+    public void show() {
         oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.update();
@@ -119,7 +119,7 @@ public class ScrPlay implements Screen, InputProcessor {
     }
 
     @Override
-    public void render ( float delta){
+    public void render(float delta) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         oc.update();
         batch.begin();
@@ -128,12 +128,11 @@ public class ScrPlay implements Screen, InputProcessor {
         batch.draw(Background2, xCoordBg2, 0);
         Scroll();
         sprHero.draw(batch);
-
+        sprEnemy.draw(batch);
 
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
-
 
 
         if (nLives > 0) {
@@ -155,7 +154,7 @@ public class ScrPlay implements Screen, InputProcessor {
         if (Gdx.input.isKeyPressed(Keys.W)) {
             sprHero.setY(sprHero.getY() + 3);
             dYspeedM = 2;
-            sprHero.setY(sprHero.getY()+ 3 );
+            sprHero.setY(sprHero.getY() + 3);
 
         }
         if (sprHero.getY() > 50) {
@@ -169,8 +168,8 @@ public class ScrPlay implements Screen, InputProcessor {
             game.updateState(0);
             musPlay.stop();
         }
-            batch.setProjectionMatrix(oc.combined);
-            sprEnemy.draw(batch);
+        batch.setProjectionMatrix(oc.combined);
+        sprEnemy.draw(batch);
 
         font.draw(batch, Integer.toString(nLives), 50, 450);
         String s1 = "Lives:";
@@ -191,13 +190,12 @@ public class ScrPlay implements Screen, InputProcessor {
         }
 
 
-
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
     }
 
 
-    void Scroll () {
+    void Scroll() {
         if (xCoordBg1 == 1280) {
             xCoordBg1 = -1280;
         }
@@ -207,27 +205,27 @@ public class ScrPlay implements Screen, InputProcessor {
     }
 
     @Override
-    public void resize ( int width, int height){
+    public void resize(int width, int height) {
 
     }
 
     @Override
-    public void pause () {
+    public void pause() {
 
     }
 
     @Override
-    public void resume () {
+    public void resume() {
 
     }
 
     @Override
-    public void hide () {
+    public void hide() {
 
     }
 
     @Override
-    public void dispose () {
+    public void dispose() {
         batch.dispose();
         Background1.dispose();
         Background2.dispose();

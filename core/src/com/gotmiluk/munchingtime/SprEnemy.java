@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -12,7 +13,7 @@ public class SprEnemy extends Sprite {
     Texture walkSheet;
     // A variable for tracking elapsed time for the animation
     float stateTime;
-    TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is columns 1 is rows
+//    TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is columns 1 is rows
 
 
 
@@ -20,6 +21,8 @@ public class SprEnemy extends Sprite {
 
  public SprEnemy(int nW, int nH, int nX, int nY) {
      walkSheet = new Texture("Sprite Sheet .png");
+     TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is columns 1 is rows
+
      setSize(nW, nH);
      setPosition(nX, nY);
      setFlip(false, false);
@@ -39,13 +42,13 @@ public class SprEnemy extends Sprite {
 
  }
 
-    public void render ( float delta) {
+    public void draw(Batch batch) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
 
         // Get current frame of animation for the current stateTime
         TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
 
-        //batch.draw(currentFrame, 50, -200); // Draw current frame at (50, 50)
+        batch.draw(currentFrame, 50, -200); // Draw current frame at (50, 50)
 
     }}
