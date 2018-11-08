@@ -14,7 +14,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import java.util.Random;
+
 
 public class ScrPlay implements Screen, InputProcessor {
     SpriteBatch batch;
@@ -25,7 +25,7 @@ public class ScrPlay implements Screen, InputProcessor {
     OrthographicCamera oc;
     Texture Background1, Background2;
     private int nLives;
-    boolean x = false;
+
 
     private BitmapFont font;
     double dYspeedM;

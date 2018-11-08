@@ -12,7 +12,7 @@ public class SprEnemy extends Sprite {
     Animation<TextureRegion> walkAnimation; // Must declare frame type (TextureRegion)
     Texture walkSheet;
     // A variable for tracking elapsed time for the animation
-    float stateTime;
+    float fstateTime;
 //    TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is columns 1 is rows
 
 
@@ -38,16 +38,16 @@ public class SprEnemy extends Sprite {
      // Instantiate a SpriteBatch for drawing and reset the elapsed animation
      // time to 0
 
-     stateTime = 0f;
+     fstateTime = 0f;
 
  }
 
     public void draw(Batch batch) {
 
-        stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
+        fstateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
 
         // Get current frame of animation for the current stateTime
-        TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
+        TextureRegion currentFrame = walkAnimation.getKeyFrame(fstateTime, true);
 
         batch.draw(currentFrame, 500, 45, 100, 100);
     }}
