@@ -15,7 +15,7 @@ public class SprEnemy extends Sprite {
     float stateTime;
 //    TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is columns 1 is rows
 float elapsedTime, playablePosition;
-float currentPosition = 0;
+float currentPosition = 500;
 
 
 
@@ -49,11 +49,13 @@ float currentPosition = 0;
         // Get current frame of animation for the current stateTime
         TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
 
-        batch.draw(currentFrame, 500, 45, 100, 100);
-        elapsedTime += (Gdx.graphics.getDeltaTime()) * 2;
-       playablePosition = (Gdx.graphics.getWidth()) / 2 - 200;
+       batch.draw(currentFrame, 500, 45, 100, 100);
+        
+
+        elapsedTime += (Gdx.graphics.getDeltaTime()) ;
+       playablePosition = (Gdx.graphics.getWidth());
 // float currentPosition = 0; // <-- this needs set outside ouside of the render method.
-        currentPosition += 10;
+        currentPosition -= 5;
         batch.draw(walkAnimation.getKeyFrame(elapsedTime), currentPosition, 0, 100, 300);
 
     }}
