@@ -1,7 +1,7 @@
 package com.gotmiluk.munchingtime;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -14,8 +14,7 @@ public class SprEnemy extends Sprite {
     // A variable for tracking elapsed time for the animation
     float stateTime;
 //    TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is columns 1 is rows
-float elapsedTime, playablePosition;
-float currentPosition = 500;
+private Vector2 vVelocity = Vector2.Zero;
 
 
 
@@ -48,14 +47,6 @@ float currentPosition = 500;
 
         // Get current frame of animation for the current stateTime
         TextureRegion currentFrame = walkAnimation.getKeyFrame(stateTime, true);
-
-       batch.draw(currentFrame, 500, 45, 100, 100);
-        
-
-        elapsedTime += (Gdx.graphics.getDeltaTime()) ;
-       playablePosition = (Gdx.graphics.getWidth());
-// float currentPosition = 0; // <-- this needs set outside ouside of the render method.
-        currentPosition -= 5;
-        batch.draw(walkAnimation.getKeyFrame(elapsedTime), currentPosition, 0, 100, 300);
-
+        batch.draw(currentFrame, getX(), getY(), 100, 100);
+        setX(getX()-1);
     }}
