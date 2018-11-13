@@ -36,6 +36,9 @@ public class ScrMenu implements Screen, InputProcessor {
         btnPlay = new SprButton(200,90, 220, 250, "Press Play.png");
         imgLogo = new SprLogo(500,150, 75, 70, "Logo.png");
         Gdx.input.setInputProcessor(this);
+        musMenu = Gdx.audio.newMusic(Gdx.files.internal("MMX Menu.mp3"));
+        musMenu.setLooping(true);
+        musMenu.play();
     }
 
     @Override
@@ -63,6 +66,7 @@ public class ScrMenu implements Screen, InputProcessor {
 
     @Override
     public void hide() {
+        musMenu.stop();
     }
 
     @Override

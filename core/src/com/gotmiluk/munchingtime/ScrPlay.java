@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import java.util.concurrent.TimeUnit;
+import com.badlogic.gdx.audio.Music;
 import java.lang.InterruptedException;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -19,6 +20,7 @@ public class ScrPlay implements Screen, InputProcessor{
     GamMunch game;
     OrthographicCamera oc;
     Texture Background1, Background2;
+    Music musPlay;
     private int nLives;
     private BitmapFont font;
     double dYspeedM;
@@ -95,6 +97,9 @@ public class ScrPlay implements Screen, InputProcessor{
 
         Gdx.input.setInputProcessor(this);
 
+        musPlay = Gdx.audio.newMusic(Gdx.files.internal("MMX.mp3"));
+        musPlay.setLooping(true);
+        musPlay.play();
     }
 
     @Override
@@ -206,7 +211,7 @@ public class ScrPlay implements Screen, InputProcessor{
 
     @Override
     public void hide() {
-
+        musPlay.stop();
     }
 
     @Override
