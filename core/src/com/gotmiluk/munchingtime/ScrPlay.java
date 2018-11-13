@@ -36,7 +36,6 @@ public class ScrPlay implements Screen, InputProcessor {
 
 
     public ScrPlay(GamMunch _game) {
-
         batch = new SpriteBatch();
         game = _game;
         nLives = 3;
@@ -52,13 +51,6 @@ public class ScrPlay implements Screen, InputProcessor {
         xMax = 1280;
         xCoordBg1 = 0;
         xCoordBg2 = -1280;
-
-
-        musPlay = Gdx.audio.newMusic(Gdx.files.internal("MMX.mp3"));
-        musPlay.setLooping(true);
-        musPlay.play();
-
-
     }
 
     @Override
