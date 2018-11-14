@@ -42,7 +42,7 @@ public class ScrPlay implements Screen, InputProcessor {
         nLives = 3;
         font = new BitmapFont();
 
-        sprHero = new SprPancake(80, 100, 0, 128);
+        sprHero = new SprPancake(80, 100, 100, 128);
         sprEnemy = new SprEnemy(60, 100, 500, 45);
 
 
@@ -154,24 +154,19 @@ public class ScrPlay implements Screen, InputProcessor {
             nLives++;
             nLives++;
             game.updateState(0);
-        }
 
-        if (Gdx.input.isKeyPressed(Keys.A)) {
-            sprHero.setX(sprHero.getX() - 4);
 
-        }
-        if (Gdx.input.isKeyPressed(Keys.W)) {
-            sprHero.setY(sprHero.getY() + 3);
-            dYspeedM = 2;
-            sprHero.setY(sprHero.getY() + 3);
+       // }
+        //if (Gdx.input.isKeyPressed(Keys.W)) {
+          ////  sprHero.setY(sprHero.getY() + 3);
+          //  dYspeedM = 2;ww
+           // sprHero.setY(sprHero.getY() + 3);
 
         }
         if (sprHero.getY() > 50) {
             dYspeedM -= 1;
             sprHero.translateY((float) dYspeedM);
-        }
-        if (Gdx.input.isKeyPressed(Keys.D)) {
-            sprHero.setX(sprHero.getX() + 4);
+
         }
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
             game.updateState(0);
