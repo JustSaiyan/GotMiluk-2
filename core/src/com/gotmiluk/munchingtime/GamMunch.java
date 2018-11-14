@@ -21,7 +21,7 @@ public class GamMunch extends Game {
 
 			setScreen(scrMenu);
 		} else if (nScreen == 1) {
-		
+
 			setScreen(scrPlay);
 		}
 	}
