@@ -56,41 +56,21 @@ public class ScrPlay implements Screen, InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        {
-            boolean keyProcessed = false;
-            switch (keycode) // switch code base on the variable keycode
-            {
-                case Keys.W:     // if keycode is the same as Keys.LEFT a.k.a 19
-                    up = true;      // do this
-
-                    break;
-
-
-            }
-
-        }
-   return false;
+        return false;
     }
     @Override
     public boolean keyUp(int keycode) {
-        boolean keyProcessed = false;
-        switch (keycode) // switch code base on the variable keycode
-        {
-
-             case Keys.W:       // if keycode is the same as Keys.LEFT a.k.a 19
-                up = false;     // do this
-                keyProcessed = true;    // we have reacted to a keypress
-                break;
-        }
-        return keyProcessed;    //  return our peyProcessed flag
-    }
-
-
-    @Override
-    public boolean keyTyped(char character) {
         return false;
-    }
 
+    }
+    @Override
+    public boolean keyTyped(char character ) {
+         if( keyDown(keyTyped( 52))){
+             dYspeedM = 2;
+            sprHero.setY(sprHero.getY() + 20);
+        }
+  return true;
+    }
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         return false;
@@ -148,21 +128,16 @@ public class ScrPlay implements Screen, InputProcessor {
             batch.setProjectionMatrix(oc.combined);
 
         } else if (nLives == 0) {
-            sprHero.setX(0);
-            sprHero.setY(128);
+            sprHero.setX(100);
+            sprHero.setY(45);
+            sprEnemy.setX(500);
+            sprHero.setY(45);
             nLives++;
             nLives++;
             nLives++;
             game.updateState(0);
 
-
-       // }
-        //if (Gdx.input.isKeyPressed(Keys.W)) {
-          ////  sprHero.setY(sprHero.getY() + 3);
-          //  dYspeedM = 2;ww
-           // sprHero.setY(sprHero.getY() + 3);
-
-        }
+   }
         if (sprHero.getY() > 50) {
             dYspeedM -= 1;
             sprHero.translateY((float) dYspeedM);
@@ -170,7 +145,7 @@ public class ScrPlay implements Screen, InputProcessor {
         }
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
             game.updateState(0);
-            musPlay.stop();
+
         }
 
 
