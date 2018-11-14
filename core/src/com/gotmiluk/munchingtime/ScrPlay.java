@@ -64,7 +64,7 @@ public class ScrPlay implements Screen, InputProcessor {
                     up = true;      // do this
 
                     break;
-                
+
 
             }
 
@@ -77,7 +77,7 @@ public class ScrPlay implements Screen, InputProcessor {
         switch (keycode) // switch code base on the variable keycode
         {
 
-             case Keys.UP:       // if keycode is the same as Keys.LEFT a.k.a 19
+             case Keys.W:       // if keycode is the same as Keys.LEFT a.k.a 19
                 up = false;     // do this
                 keyProcessed = true;    // we have reacted to a keypress
                 break;
