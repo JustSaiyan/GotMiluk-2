@@ -11,6 +11,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import java.awt.event.KeyEvent;
 
 
 public class ScrPlay implements Screen, InputProcessor {
@@ -121,6 +122,8 @@ public class ScrPlay implements Screen, InputProcessor {
         } else if (nLives == 0) {
             sprHero.setX(0);
             sprHero.setY(128);
+            sprEnemy.setX(500);
+            sprEnemy.setY(45);
             nLives++;
             nLives++;
             nLives++;
@@ -135,7 +138,6 @@ public class ScrPlay implements Screen, InputProcessor {
             sprHero.setY(sprHero.getY() + 3);
             dYspeedM = 2;
             sprHero.setY(sprHero.getY() + 3);
-
         }
         if (sprHero.getY() > 50) {
             dYspeedM -= 1;
@@ -177,6 +179,8 @@ public class ScrPlay implements Screen, InputProcessor {
         }
         if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             nLives--;
+            sprEnemy.setX(500);
+            sprEnemy.setY(45);
         }
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
