@@ -11,7 +11,7 @@ import com.gotmiluk.munchingtime.ScrMenu;
 public class GamMunch extends Game {
 	ScrPlay scrPlay;
 	ScrMenu scrMenu;
-	
+
 
 	int nScreen; // 0 for menu, 1 for play
 

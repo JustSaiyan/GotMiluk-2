@@ -23,7 +23,7 @@ public class ScrPlay implements Screen, InputProcessor {
     Music musPlay;
     GamMunch game;
     OrthographicCamera oc;
-    Texture Background1, Background2;
+    Texture TxBackground1, TxBackground2;
     private int nLives;
 
 
@@ -46,8 +46,8 @@ public class ScrPlay implements Screen, InputProcessor {
 
 
         batch = new SpriteBatch();
-        Background1 = new Texture("Background.jpg");
-        Background2 = new Texture("Background.jpg"); // identical
+        TxBackground1 = new Texture("Background.jpg");
+        TxBackground2 = new Texture("Background.jpg"); // identical
         xMax = 1280;
         xCoordBg1 = 0;
         xCoordBg2 = -1280;
@@ -111,8 +111,8 @@ public class ScrPlay implements Screen, InputProcessor {
         oc.update();
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
-        batch.draw(Background1, xCoordBg1, 0);
-        batch.draw(Background2, xCoordBg2, 0);
+        batch.draw(TxBackground1, xCoordBg1, 0);
+        batch.draw(TxBackground2, xCoordBg2, 0);
         Scroll();
         sprHero.draw(batch);
         sprEnemy.draw(batch);
@@ -221,8 +221,8 @@ public class ScrPlay implements Screen, InputProcessor {
     @Override
     public void dispose() {
         batch.dispose();
-        Background1.dispose();
-        Background2.dispose();
+        TxBackground1.dispose();
+        TxBackground2.dispose();
         batch.dispose();
     }
 }
