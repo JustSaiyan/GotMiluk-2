@@ -1,7 +1,7 @@
 package com.gotmiluk.munchingtime;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -19,10 +19,9 @@ public class SprEnemy extends Sprite {
 
 
 
- public SprEnemy(int nW, int nH, int nX, int nY) {
+    public SprEnemy(int nW, int nH, int nX, int nY) {
      walkSheet = new Texture("Sprite Sheet .png");
      TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is columns 1 is rows
-
      setSize(nW, nH);
      setPosition(nX, nY);
      setFlip(false, false);
@@ -49,5 +48,10 @@ public class SprEnemy extends Sprite {
         // Get current frame of animation for the current stateTime
         TextureRegion currentFrame = walkAnimation.getKeyFrame(fstateTime, true);
 
-        batch.draw(currentFrame, 500, 45, 100, 100);
+
+
+
+        batch.draw(currentFrame, getX(), getY(), 100, 100);
+        setX(getX()-1);
     }}
+
