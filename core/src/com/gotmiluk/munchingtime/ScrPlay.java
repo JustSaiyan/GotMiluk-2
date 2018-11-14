@@ -32,6 +32,7 @@ public class ScrPlay implements Screen, InputProcessor {
     int xMax, xCoordBg1, xCoordBg2;
     final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
 
+    private boolean left,right,up,down;
 
 
 
@@ -55,13 +56,44 @@ public class ScrPlay implements Screen, InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        return false;
-    }
+        {
+            boolean keyProcessed = false;
+            switch (keycode) // switch code base on the variable keycode
+            {
+                case Keys.W:     // if keycode is the same as Keys.LEFT a.k.a 19
+                    up = true;      // do this
 
+                    break;
+                return keyProcessed;    //  return our peyProcessed flag
+
+            }
+
+        }
+    }
     @Override
     public boolean keyUp(int keycode) {
-        return false;
+        boolean keyProcessed = false;
+        switch (keycode) // switch code base on the variable keycode
+        {
+            case Keys.LEFT:     // if keycode is the same as Keys.LEFT a.k.a 21
+                left = false;   // do this
+                keyProcessed = true;    // we have reacted to a keypress
+                break;
+            case Keys.RIGHT:    // if keycode is the same as Keys.LEFT a.k.a 22
+                right = false;  // do this
+                keyProcessed = true;    // we have reacted to a keypress
+                break;
+            case Keys.UP:       // if keycode is the same as Keys.LEFT a.k.a 19
+                up = false;     // do this
+                keyProcessed = true;    // we have reacted to a keypress
+                break;
+            case Keys.DOWN:     // if keycode is the same as Keys.LEFT a.k.a 20
+                down = false;   // do this
+                keyProcessed = true;    // we have reacted to a keypress
+        }
+        return keyProcessed;    //  return our peyProcessed flag
     }
+
 
     @Override
     public boolean keyTyped(char character) {
