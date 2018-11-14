@@ -118,7 +118,6 @@ public class ScrPlay implements Screen, InputProcessor {
 
         if (nLives > 0) {
             batch.setProjectionMatrix(oc.combined);
-
         } else if (nLives == 0) {
             sprHero.setX(0);
             sprHero.setY(128);
