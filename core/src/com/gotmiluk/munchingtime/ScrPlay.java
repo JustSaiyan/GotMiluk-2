@@ -42,7 +42,7 @@ public class ScrPlay implements Screen, InputProcessor {
         nLives = 3;
         font = new BitmapFont();
 
-        sprHero = new SprPancake(80, 100, 100, 128);
+        sprHero = new SprPancake(80, 100, 100, 45);
         sprEnemy = new SprEnemy(60, 100, 500, 45);
 
 
@@ -56,6 +56,8 @@ public class ScrPlay implements Screen, InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
+
+
         return false;
     }
     @Override
@@ -65,11 +67,12 @@ public class ScrPlay implements Screen, InputProcessor {
     }
     @Override
     public boolean keyTyped(char character ) {
-         if( keyDown(keyTyped( 52))){
-             dYspeedM = 2;
+        if(Gdx.input.isKeyPressed(Keys.W)) {
+            dYspeedM = 2;
             sprHero.setY(sprHero.getY() + 20);
+
         }
-  return true;
+   return true;
     }
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
@@ -138,9 +141,9 @@ public class ScrPlay implements Screen, InputProcessor {
             game.updateState(0);
 
    }
-        if (sprHero.getY() > 50) {
+        if (sprHero.getY() > 45) {
             dYspeedM -= 1;
-            sprHero.translateY((float) dYspeedM);
+           sprHero.translateY((float) dYspeedM);
 
         }
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
