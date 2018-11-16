@@ -61,7 +61,12 @@ public class ScrPlay implements Screen, InputProcessor {
 
     @Override
     public boolean keyTyped(char character) {
-        return false;
+        if(Gdx.input.isKeyPressed(Keys.W)) {
+            dYspeedM = 2;
+            sprHero.setY(sprHero.getY() + 20);
+
+        }
+        return true;
     }
 
     @Override
@@ -120,7 +125,7 @@ public class ScrPlay implements Screen, InputProcessor {
         if (nLives > 0) {
             batch.setProjectionMatrix(oc.combined);
         } else if (nLives == 0) {
-            sprHero.setX(0);
+            sprHero.setX(55);
             sprHero.setY(128);
             sprEnemy.setX(500);
             sprEnemy.setY(45);
@@ -131,11 +136,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
 
 
-        }
-        if (Gdx.input.isKeyPressed(Keys.W)) {
-            sprHero.setY(sprHero.getY() + 3);
-            dYspeedM = 2;
-            sprHero.setY(sprHero.getY() + 3);
+
         }
         if (sprHero.getY() > 50) {
             dYspeedM -= 1;
