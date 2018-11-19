@@ -39,10 +39,6 @@ public class ScrPlay implements Screen, InputProcessor {
         font = new BitmapFont();
         spawnHeroshot();
 
-        sprHeroshot.setRegionWidth(80);
-        sprHeroshot.setRegionHeight(80);
-        sprHeroshot.setX(sprHero.getX());
-        sprHeroshot.setY(sprHero.getY());
         sprHero = new SprPancake(80, 100, 0, 128);
         sprEnemy = new SprEnemy(60, 100, 500, 45);
 
@@ -57,6 +53,10 @@ public class ScrPlay implements Screen, InputProcessor {
     private void spawnHeroshot() {
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {
             sprHeroshot.draw(batch);
+            sprHeroshot.setRegionWidth(80);
+            sprHeroshot.setRegionHeight(80);
+            sprHeroshot.setX(sprHero.getX());
+            sprHeroshot.setY(sprHero.getY());
         }
     }
 
