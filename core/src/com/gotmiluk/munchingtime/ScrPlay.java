@@ -37,13 +37,14 @@ public class ScrPlay implements Screen, InputProcessor {
         game = _game;
         nLives = 3;
         font = new BitmapFont();
+        spawnHeroshot();
 
+        sprHeroshot.setRegionWidth(80);
+        sprHeroshot.setRegionHeight(80);
+        sprHeroshot.setX(sprHero.getX());
+        sprHeroshot.setY(sprHero.getY());
         sprHero = new SprPancake(80, 100, 0, 128);
         sprEnemy = new SprEnemy(60, 100, 500, 45);
-
-        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            sprHeroshot = new SprHeroshot(80, 100, 0, 128);
-        }
 
         batch = new SpriteBatch();
         TxBackground1 = new Texture("Background.jpg");
@@ -51,6 +52,12 @@ public class ScrPlay implements Screen, InputProcessor {
         xMax = 1280;
         xCoordBg1 = 0;
         xCoordBg2 = -1280;
+    }
+
+    private void spawnHeroshot() {
+        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+            sprHeroshot.draw(batch);
+        }
     }
 
     @Override
@@ -115,7 +122,6 @@ public class ScrPlay implements Screen, InputProcessor {
         batch.draw(TxBackground2, xCoordBg2, 0);
         Scroll();
         sprHero.draw(batch);
-        sprHeroshot.draw(batch);
         sprEnemy.draw(batch);
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
@@ -152,6 +158,7 @@ public class ScrPlay implements Screen, InputProcessor {
             sprHero.setX(sprHero.getX() + 4);
         }
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+            spawnHeroshot();
             sprHeroshot.setX(sprHeroshot.getX() + 15);
         } else if (sprHeroshot.getX() > 500) {
             sprHeroshot.setX(0);
