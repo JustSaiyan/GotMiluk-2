@@ -9,9 +9,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-import java.awt.event.KeyEvent;
+import com.badlogic.gdx.utils.Array;
 
 
 public class ScrPlay implements Screen, InputProcessor {
@@ -19,6 +19,8 @@ public class ScrPlay implements Screen, InputProcessor {
     SprPancake sprHero;
     SprEnemy sprEnemy;
     SprHeroshot sprHeroshot;
+
+    public Array<Sprite> arsprHeroshot;
     GamMunch game;
     OrthographicCamera oc;
     Texture TxBackground1, TxBackground2;
@@ -52,9 +54,8 @@ public class ScrPlay implements Screen, InputProcessor {
 
     private void spawnHeroshot() {
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+            sprHeroshot = new SprHeroshot(80,50);
             sprHeroshot.draw(batch);
-            sprHeroshot.setRegionWidth(80);
-            sprHeroshot.setRegionHeight(80);
             sprHeroshot.setX(sprHero.getX());
             sprHeroshot.setY(sprHero.getY());
         }
