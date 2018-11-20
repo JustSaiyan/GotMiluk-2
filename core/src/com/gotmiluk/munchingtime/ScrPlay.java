@@ -61,7 +61,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
     @Override
     public boolean keyTyped(char character) {
-        if(Gdx.input.isKeyPressed(Keys.W)) {
+        if(character =='w') {
             dYspeedM = 2;
             sprHero.setY(sprHero.getY() + 20);
 
