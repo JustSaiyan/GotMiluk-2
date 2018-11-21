@@ -14,8 +14,11 @@ public class SprPizza  extends Sprite {
     float fstateTime;
 //    TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is columns 1 is rows
 
+
+
+
     public SprPizza(int nW, int nH, int nX, int nY) {
-        walkSheet = new Texture("");
+        walkSheet = new Texture("Pizza SpriteSheet.png");
         TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is columns 1 is rows
         setSize(nW, nH);
         setPosition(nX, nY);

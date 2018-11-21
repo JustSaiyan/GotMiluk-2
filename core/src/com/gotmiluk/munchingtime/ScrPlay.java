@@ -18,6 +18,7 @@ public class ScrPlay implements Screen, InputProcessor {
     SpriteBatch batch;
     SprPancake sprHero;
     SprEnemy sprEnemy;
+    SprPizza sprPizza;
     GamMunch game;
     OrthographicCamera oc;
     Texture TxBackground1, TxBackground2;
@@ -39,7 +40,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
         sprHero = new SprPancake(80, 100, 55, 128);
         sprEnemy = new SprEnemy(60, 100, 500, 45);
-
+        sprPizza = new SprPizza(60, 100, 500, 400);
 
         batch = new SpriteBatch();
         TxBackground1 = new Texture("Background.jpg");
@@ -117,6 +118,7 @@ public class ScrPlay implements Screen, InputProcessor {
         Scroll();
         sprHero.draw(batch);
         sprEnemy.draw(batch);
+        sprPizza.draw(batch);
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
@@ -178,6 +180,11 @@ public class ScrPlay implements Screen, InputProcessor {
             nLives--;
             sprEnemy.setX(500);
             sprEnemy.setY(45);
+        }
+        if (sprHero.getBoundingRectangle().overlaps(sprPizza.getBoundingRectangle())) {
+            nLives--;
+            sprPizza.setX(500);
+            sprPizza.setY(400);
         }
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
