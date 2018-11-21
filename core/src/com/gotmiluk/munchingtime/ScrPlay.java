@@ -51,7 +51,8 @@ public class ScrPlay implements Screen, InputProcessor {
 
         Random rand = new Random();
 
-        int n = rand.nextInt(400) + 200;
+        int nRamdomY;
+        nRamdomY= rand.nextInt(400) + 200;
 
     }
 
@@ -136,7 +137,7 @@ public class ScrPlay implements Screen, InputProcessor {
             sprHero.setY(128);
             sprEnemy.setX(500);
             sprEnemy.setY(45);
-            sprPizza.setY(n);
+            sprPizza.setY(400);
             sprPizza.setX(500);
 
             nLives++;
