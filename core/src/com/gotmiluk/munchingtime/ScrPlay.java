@@ -10,8 +10,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import java.util.Random;
 
-import java.awt.event.KeyEvent;
 
 
 public class ScrPlay implements Screen, InputProcessor {
@@ -48,6 +48,11 @@ public class ScrPlay implements Screen, InputProcessor {
         xMax = 1280;
         xCoordBg1 = 0;
         xCoordBg2 = -1280;
+
+        Random rand = new Random();
+
+        int n = rand.nextInt(400) + 200;
+
     }
 
     @Override
@@ -131,6 +136,9 @@ public class ScrPlay implements Screen, InputProcessor {
             sprHero.setY(128);
             sprEnemy.setX(500);
             sprEnemy.setY(45);
+            sprPizza.setY(n);
+            sprPizza.setX(500);
+
             nLives++;
             nLives++;
             nLives++;
@@ -174,7 +182,9 @@ public class ScrPlay implements Screen, InputProcessor {
         }
         if(sprEnemy.getX()==0) {
             sprEnemy.setX(600);
-
+        }
+        if(sprPizza.getX()==0) {
+            sprPizza.setX(600);
         }
         if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             nLives--;
