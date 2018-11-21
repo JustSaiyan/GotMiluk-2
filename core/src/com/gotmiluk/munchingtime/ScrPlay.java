@@ -39,9 +39,12 @@ public class ScrPlay implements Screen, InputProcessor {
         game = _game;
         nLives = 3;
         font = new BitmapFont();
-        spawnHeroshot();
+        //spawnHeroshot();
 
         sprHero = new SprPancake(80, 100, 0, 128);
+        sprHeroshot = new SprHeroshot(80,100, 0, 100);
+      //  sprHeroshot.setX(sprHero.getX());
+      //  sprHeroshot.setY(sprHero.getY());
         sprEnemy = new SprEnemy(60, 100, 500, 45);
 
         batch = new SpriteBatch();
@@ -52,14 +55,19 @@ public class ScrPlay implements Screen, InputProcessor {
         xCoordBg2 = -1280;
     }
 
-    private void spawnHeroshot() {
+   /* private void spawnHeroshot() {
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            sprHeroshot = new SprHeroshot(80,50);
+            sprHeroshot = new SprHeroshot(80,50,0,128);
             sprHeroshot.draw(batch);
             sprHeroshot.setX(sprHero.getX());
             sprHeroshot.setY(sprHero.getY());
+            sprHeroshot.setX(sprHeroshot.getX() + 15);
+            if (sprHeroshot.getX() > 500) {
+                sprHeroshot.setX(0);
+            }
         }
     }
+    */
 
     @Override
     public boolean keyDown(int keycode) {
@@ -123,6 +131,7 @@ public class ScrPlay implements Screen, InputProcessor {
         batch.draw(TxBackground2, xCoordBg2, 0);
         Scroll();
         sprHero.draw(batch);
+        sprHeroshot.draw(batch);
         sprEnemy.draw(batch);
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
@@ -159,10 +168,11 @@ public class ScrPlay implements Screen, InputProcessor {
             sprHero.setX(sprHero.getX() + 4);
         }
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            spawnHeroshot();
+            //spawnHeroshot();
             sprHeroshot.setX(sprHeroshot.getX() + 15);
-        } else if (sprHeroshot.getX() > 500) {
-            sprHeroshot.setX(0);
+            if (sprHeroshot.getX() > 500) {
+                sprHeroshot.setX(0);
+            }
         }
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
             game.updateState(0);
@@ -197,6 +207,10 @@ public class ScrPlay implements Screen, InputProcessor {
         }
         if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             nLives--;
+            sprEnemy.setX(500);
+            sprEnemy.setY(45);
+        }
+        if (sprHeroshot.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             sprEnemy.setX(500);
             sprEnemy.setY(45);
         }
