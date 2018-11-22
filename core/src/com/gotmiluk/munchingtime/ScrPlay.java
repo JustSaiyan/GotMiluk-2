@@ -28,7 +28,8 @@ public class ScrPlay implements Screen, InputProcessor {
     double dYspeedM;
     int xMax, xCoordBg1, xCoordBg2;
     final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
-
+    int nRamdomY;
+    int nRamdomX;
 
 
 
@@ -51,8 +52,9 @@ public class ScrPlay implements Screen, InputProcessor {
 
         Random rand = new Random();
 
-        int nRamdomY;
+
         nRamdomY= rand.nextInt(400) + 200;
+        nRamdomX= rand.nextInt(500) + 200;
 
     }
 
@@ -137,8 +139,8 @@ public class ScrPlay implements Screen, InputProcessor {
             sprHero.setY(128);
             sprEnemy.setX(500);
             sprEnemy.setY(45);
-            sprPizza.setY(400);
-            sprPizza.setX(500);
+            sprPizza.setY (nRamdomY);
+            sprPizza.setX(nRamdomX);
 
             nLives++;
             nLives++;
@@ -185,7 +187,8 @@ public class ScrPlay implements Screen, InputProcessor {
             sprEnemy.setX(600);
         }
         if(sprPizza.getX()==0) {
-            sprPizza.setX(600);
+            sprPizza.setY(nRamdomY);
+            sprPizza.setX(500);
         }
         if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             nLives--;
@@ -195,7 +198,7 @@ public class ScrPlay implements Screen, InputProcessor {
         if (sprHero.getBoundingRectangle().overlaps(sprPizza.getBoundingRectangle())) {
             nLives--;
             sprPizza.setX(500);
-            sprPizza.setY(400);
+            sprPizza.setY(nRamdomY);
         }
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
