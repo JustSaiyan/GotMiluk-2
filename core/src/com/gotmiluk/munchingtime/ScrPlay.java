@@ -167,9 +167,10 @@ public class ScrPlay implements Screen, InputProcessor {
         if (Gdx.input.isKeyPressed(Keys.D)) {
             sprHero.setX(sprHero.getX() + 4);
         }
-        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            //spawnHeroshot();
-            sprHeroshot.setX(sprHeroshot.getX() + 15);
+        if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
+         //   sprHeroshot.setX(sprHero.getX());
+         //   sprHeroshot.setY(sprHero.getY());
+            sprHeroshot.setX(sprHeroshot.getX() + 1);
             if (sprHeroshot.getX() > 500) {
                 sprHeroshot.setX(0);
             }
@@ -179,11 +180,7 @@ public class ScrPlay implements Screen, InputProcessor {
             musPlay.stop();
         }
 
-
-
         batch.setProjectionMatrix(oc.combined);
-
-
         font.draw(batch, Integer.toString(nLives), 50, 450);
         String s1 = "Lives:";
         font.draw(batch, s1, 9, 450);
