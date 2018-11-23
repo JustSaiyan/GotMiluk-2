@@ -170,7 +170,7 @@ public class ScrPlay implements Screen, InputProcessor {
         if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
          //   sprHeroshot.setX(sprHero.getX());
          //   sprHeroshot.setY(sprHero.getY());
-            sprHeroshot.setX(sprHeroshot.getX() + 1);
+            sprHeroshot.setX(sprHeroshot.getX() + 20);
             if (sprHeroshot.getX() > 500) {
                 sprHeroshot.setX(0);
             }
