@@ -81,7 +81,15 @@ public class ScrPlay implements Screen, InputProcessor {
 
     @Override
     public boolean keyTyped(char character) {
-        return false;
+        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+            //   sprHeroshot.setX(sprHero.getX());
+            //   sprHeroshot.setY(sprHero.getY());
+            sprHeroshot.setX(sprHeroshot.getX() + 50);
+            if (sprHeroshot.getX() > 500) {
+                sprHeroshot.setX(0);
+            }
+        }
+        return true;
     }
 
     @Override
@@ -167,14 +175,6 @@ public class ScrPlay implements Screen, InputProcessor {
         if (Gdx.input.isKeyPressed(Keys.D)) {
             sprHero.setX(sprHero.getX() + 4);
         }
-        if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
-         //   sprHeroshot.setX(sprHero.getX());
-         //   sprHeroshot.setY(sprHero.getY());
-            sprHeroshot.setX(sprHeroshot.getX() + 20);
-            if (sprHeroshot.getX() > 500) {
-                sprHeroshot.setX(0);
-            }
-        }
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
             game.updateState(0);
             musPlay.stop();
@@ -250,7 +250,6 @@ public class ScrPlay implements Screen, InputProcessor {
         batch.dispose();
         TxBackground1.dispose();
         TxBackground2.dispose();
-        batch.dispose();
     }
 }
 
