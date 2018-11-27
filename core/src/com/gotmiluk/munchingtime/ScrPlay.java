@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.math.Vector2;
+import com.sun.javafx.geom.Vec2d;
 
 
 public class ScrPlay implements Screen, InputProcessor {
@@ -19,6 +21,7 @@ public class ScrPlay implements Screen, InputProcessor {
     SprPancake sprHero;
     SprEnemy sprEnemy;
     SprHeroshot sprHeroshot;
+    Vector2 vPos, vDir, vPoint;
 
     public Array<Sprite> arsprHeroshot;
     GamMunch game;
@@ -43,8 +46,6 @@ public class ScrPlay implements Screen, InputProcessor {
 
         sprHero = new SprPancake(80, 100, 0, 128);
         sprHeroshot = new SprHeroshot(80,100, 0, 100);
-      //  sprHeroshot.setX(sprHero.getX());
-      //  sprHeroshot.setY(sprHero.getY());
         sprEnemy = new SprEnemy(60, 100, 500, 45);
 
         batch = new SpriteBatch();
@@ -68,6 +69,10 @@ public class ScrPlay implements Screen, InputProcessor {
         }
     }
     */
+   @Override
+   public void update() {
+
+   }
 
     @Override
     public boolean keyDown(int keycode) {
@@ -82,8 +87,8 @@ public class ScrPlay implements Screen, InputProcessor {
     @Override
     public boolean keyTyped(char character) {
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            //   sprHeroshot.setX(sprHero.getX());
-            //   sprHeroshot.setY(sprHero.getY());
+            sprHeroshot.setX(sprHero.getX());
+            sprHeroshot.setY(sprHero.getY());
             sprHeroshot.setX(sprHeroshot.getX() + 50);
             if (sprHeroshot.getX() > 500) {
                 sprHeroshot.setX(0);
