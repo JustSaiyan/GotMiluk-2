@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.math.Vector2;
-import com.sun.javafx.geom.Vec2d;
+//import com.sun.javafx.geom.Vec2d;
 
 
 public class ScrPlay implements Screen, InputProcessor {
@@ -21,7 +21,7 @@ public class ScrPlay implements Screen, InputProcessor {
     SprPancake sprHero;
     SprEnemy sprEnemy;
     SprHeroshot sprHeroshot;
-    Vector2 vPos, vDir, vPoint;
+    Vector2 vPos, vDir, vPoint, vX, vY;
 
     public Array<Sprite> arsprHeroshot;
     GamMunch game;
@@ -31,7 +31,7 @@ public class ScrPlay implements Screen, InputProcessor {
     Music musPlay;
     private BitmapFont font;
     double dYspeedM;
-    int xMax, xCoordBg1, xCoordBg2;
+    int xMax, xCoordBg1, xCoordBg2, nX, nY;
     final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
 
 
@@ -43,6 +43,10 @@ public class ScrPlay implements Screen, InputProcessor {
         nLives = 3;
         font = new BitmapFont();
         //spawnHeroshot();
+        //nX = (int) sprHero.getX();
+        //nY = (int) sprHero.getY();
+        vPos = new Vector2(0,128);
+
 
         sprHero = new SprPancake(80, 100, 0, 128);
         sprHeroshot = new SprHeroshot(80,100, 0, 100);
@@ -69,10 +73,10 @@ public class ScrPlay implements Screen, InputProcessor {
         }
     }
     */
-   @Override
-   public void update() {
+   //@Override
+   //public void update() {
 
-   }
+   //}
 
     @Override
     public boolean keyDown(int keycode) {
@@ -87,8 +91,7 @@ public class ScrPlay implements Screen, InputProcessor {
     @Override
     public boolean keyTyped(char character) {
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            sprHeroshot.setX(sprHero.getX());
-            sprHeroshot.setY(sprHero.getY());
+            //sprHeroshot.setX(sprHero.getX());
             sprHeroshot.setX(sprHeroshot.getX() + 50);
             if (sprHeroshot.getX() > 500) {
                 sprHeroshot.setX(0);
