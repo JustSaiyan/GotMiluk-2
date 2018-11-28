@@ -15,9 +15,11 @@ public class SprPizza  extends Sprite {
     TextureRegion trTemp;
    int nFrame = 0;
    int nPos = 0;
-   Array araniDude = new Animation[8];
-   float fW = walkSheet.getWidth() / 8;
-   float fH = walkSheet.getHeight() / 8;
+   Animation araniPizza[];
+   int fW = walkSheet.getWidth() / 8;
+   int fH = walkSheet.getHeight() / 8;
+   int  fSx, fSy;;
+   Sprite sprFlyingPizza;
 
     public SprPizza(int nW, int nH, int nX, int nY) {
         walkSheet = new Texture("Pizza SpriteSheet.png");
@@ -26,28 +28,26 @@ public class SprPizza  extends Sprite {
         setPosition(nX, nY);
         setFlip(false, false);
 
-        //Animation Stuff
 
-        for (int i = 0; i < 3   ; i++) {
-            Sprite[] arSprDude = new Sprite[8];
+    }
+    public void show() {
+
+        //Animation Stuff
+        nFrame = 0;
+        nPos = 0;
+        araniPizza = new Animation[8];
+        fW = walkSheet.getWidth() / 8;
+        fH = walkSheet.getHeight() / 8;
+        for (int i = 0; i < 8; i++) {
+            Sprite[] arSprPizza = new Sprite[8];
             for (int j = 0; j < 8; j++) {
                 fSx = j * fW;
                 fSy = i * fH;
-
-                arSprDude[j] = new Sprite(walkSheet);
+                sprFlyingPizza = new Sprite(walkSheet, fSx, fSy, fW, fH);
+                sprFlyingPizza.setFlip(false, true);
+                arSprPizza[j] = new Sprite(sprFlyingPizza);
             }
-            araniDude[i] = new Animation(0.8f, arSprDude);
-
-
-
-
-
-
-
-    }
-    public void draw(Batch batch) {
+            araniPizza[i] = new Animation(0.8f, arSprPizza);
 
 
     }}}
-
-
