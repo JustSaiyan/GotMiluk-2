@@ -11,6 +11,8 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.Random;
+import java.util.Scanner;
+import java.util.Timer;
 
 
 
@@ -22,7 +24,8 @@ public class ScrPlay implements Screen, InputProcessor {
     GamMunch game;
     OrthographicCamera oc;
     Texture TxBackground1, TxBackground2;
-    private int nLives;
+    long startTime, currentTime;
+    private int nLives, nTime;
     Music musPlay;
     private BitmapFont font;
     double dYspeedM;
@@ -38,6 +41,10 @@ public class ScrPlay implements Screen, InputProcessor {
         game = _game;
         nLives = 3;
         font = new BitmapFont();
+        Scanner SC = new Scanner(System.in);
+        startTime = System.currentTimeMillis();
+        currentTime = (startTime) / 1000;
+        Timer timer = new Timer();
 
         sprHero = new SprPancake(80, 100, 55, 128);
         sprEnemy = new SprEnemy(60, 100, 500, 45);
@@ -51,11 +58,8 @@ public class ScrPlay implements Screen, InputProcessor {
         xCoordBg2 = -1280;
 
         Random rand = new Random();
-
-
         nRamdomY= rand.nextInt(400) + 200;
         nRamdomX= rand.nextInt(500) + 200;
-
     }
 
     @Override
@@ -141,16 +145,12 @@ public class ScrPlay implements Screen, InputProcessor {
             sprEnemy.setY(45);
             sprPizza.setY (nRamdomY);
             sprPizza.setX(nRamdomX);
-
             nLives++;
             nLives++;
             nLives++;
             game.updateState(0);
-
-
-
-
         }
+
         if (sprHero.getY() > 50) {
             dYspeedM -= 1;
             sprHero.translateY((float) dYspeedM);
@@ -167,8 +167,11 @@ public class ScrPlay implements Screen, InputProcessor {
 
 
         font.draw(batch, Integer.toString(nLives), 50, 450);
+        font.draw(batch, Long.toString(startTime), 50, 470);
         String s1 = "Lives:";
+        String s2 = "Time:";
         font.draw(batch, s1, 9, 450);
+        font.draw(batch, s2, 9, 470);
         batch.end();
 
         if (sprHero.getX() < 0) {
