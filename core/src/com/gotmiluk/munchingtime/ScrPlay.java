@@ -42,7 +42,8 @@ public class ScrPlay implements Screen, InputProcessor {
         nLives = 3;
         font = new BitmapFont();
         Scanner SC = new Scanner(System.in);
-        startTime = System.currentTimeMillis();
+        //startTime = System.currentTimeMillis();
+        startTime += Gdx.graphics.getDeltaTime();
         currentTime = (startTime) / 1000;
         Timer timer = new Timer();
 
@@ -138,6 +139,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
         if (nLives > 0) {
             batch.setProjectionMatrix(oc.combined);
+            startTime++;
         } else if (nLives == 0) {
             sprHero.setX(55);
             sprHero.setY(128);
@@ -148,6 +150,7 @@ public class ScrPlay implements Screen, InputProcessor {
             nLives++;
             nLives++;
             nLives++;
+            startTime = 0;
             game.updateState(0);
         }
 
