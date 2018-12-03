@@ -145,7 +145,7 @@ public class ScrPlay implements Screen, InputProcessor {
             sprHero.setY(128);
             sprEnemy.setX(500);
             sprEnemy.setY(45);
-            sprPizza.setY (nRamdomY);
+            sprPizza.setY(nRamdomY);
             sprPizza.setX(nRamdomX);
             nLives++;
             nLives++;
@@ -189,22 +189,22 @@ public class ScrPlay implements Screen, InputProcessor {
         if (sprHero.getY() > 400) {
             sprHero.setY(400);
         }
-        if(sprEnemy.getX()==0) {
+        if (sprEnemy.getX() == 0) {
             sprEnemy.setX(600);
         }
-        if(sprPizza.getX()==0) {
+        if (sprPizza.getX() == 0) {
             sprPizza.setY(nRamdomY);
             sprPizza.setX(500);
-        }
-        if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
-            nLives--;
-            sprEnemy.setX(500);
-            sprEnemy.setY(45);
         }
         if (sprHero.getBoundingRectangle().overlaps(sprPizza.getBoundingRectangle())) {
             nLives--;
             sprPizza.setX(500);
             sprPizza.setY(nRamdomY);
+        }
+        if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
+            nLives--;
+            sprEnemy.setX(500);
+            sprEnemy.setY(45);
         }
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
