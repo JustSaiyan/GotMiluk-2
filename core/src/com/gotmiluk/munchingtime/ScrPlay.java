@@ -12,18 +12,14 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.math.Vector2;
-//import com.sun.javafx.geom.Vec2d;
+import com.gotmiluk.munchingtime.SprPancakeshot;
 
 
 public class ScrPlay implements Screen, InputProcessor {
     SpriteBatch batch;
     SprPancake sprHero;
     SprEnemy sprEnemy;
-    SprHeroshot sprHeroshot;
-    Vector2 vPos, vDir, vPoint, vX, vY;
-
-    public Array<Sprite> arsprHeroshot;
+    SprPancakeshot sprPancakeshot;
     GamMunch game;
     OrthographicCamera oc;
     Texture TxBackground1, TxBackground2;
@@ -43,13 +39,11 @@ public class ScrPlay implements Screen, InputProcessor {
         nLives = 3;
         font = new BitmapFont();
         //spawnHeroshot();
-        //nX = (int) sprHero.getX();
-        //nY = (int) sprHero.getY();
-        vPos = new Vector2(0,128);
 
+        //nY = (int) sprHero.getY();
 
         sprHero = new SprPancake(80, 100, 0, 128);
-        sprHeroshot = new SprHeroshot(80,100, 0, 100);
+        sprPancakeshot = new SprPancakeshot(80,100, -100, -100);
         sprEnemy = new SprEnemy(60, 100, 500, 45);
 
         batch = new SpriteBatch();
@@ -62,13 +56,13 @@ public class ScrPlay implements Screen, InputProcessor {
 
    /* private void spawnHeroshot() {
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            sprHeroshot = new SprHeroshot(80,50,0,128);
-            sprHeroshot.draw(batch);
-            sprHeroshot.setX(sprHero.getX());
-            sprHeroshot.setY(sprHero.getY());
-            sprHeroshot.setX(sprHeroshot.getX() + 15);
-            if (sprHeroshot.getX() > 500) {
-                sprHeroshot.setX(0);
+            sprPancakeshot = new SprPancakeshot(80,50,0,128);
+            sprPancakeshot.draw(batch);
+            sprPancakeshot.setX(sprHero.getX());
+            sprPancakeshot.setY(sprHero.getY());
+            sprPancakeshot.setX(sprPancakeshot.getX() + 15);
+            if (sprPancakeshot.getX() > 500) {
+                sprPancakeshot.setX(0);
             }
         }
     }
@@ -91,11 +85,15 @@ public class ScrPlay implements Screen, InputProcessor {
     @Override
     public boolean keyTyped(char character) {
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            //sprHeroshot.setX(sprHero.getX());
-            sprHeroshot.setX(sprHeroshot.getX() + 50);
-            if (sprHeroshot.getX() > 500) {
-                sprHeroshot.setX(0);
+            //sprPancakeshot.setX(sprHero.getX());
+            sprPancakeshot.shoot((int) sprHero.getY());
+            if (sprPancakeshot.getX() > 500) {
+                sprPancakeshot.setX(0);
             }
+        }
+        if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+            game.updateState(0);
+            musPlay.stop();
         }
         return true;
     }
@@ -147,7 +145,7 @@ public class ScrPlay implements Screen, InputProcessor {
         batch.draw(TxBackground2, xCoordBg2, 0);
         Scroll();
         sprHero.draw(batch);
-        sprHeroshot.draw(batch);
+        sprPancakeshot.draw(batch);
         sprEnemy.draw(batch);
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
@@ -183,10 +181,6 @@ public class ScrPlay implements Screen, InputProcessor {
         if (Gdx.input.isKeyPressed(Keys.D)) {
             sprHero.setX(sprHero.getX() + 4);
         }
-        if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
-            game.updateState(0);
-            musPlay.stop();
-        }
 
         batch.setProjectionMatrix(oc.combined);
         font.draw(batch, Integer.toString(nLives), 50, 450);
@@ -215,7 +209,7 @@ public class ScrPlay implements Screen, InputProcessor {
             sprEnemy.setX(500);
             sprEnemy.setY(45);
         }
-        if (sprHeroshot.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
+        if (sprPancakeshot.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             sprEnemy.setX(500);
             sprEnemy.setY(45);
         }
@@ -223,6 +217,9 @@ public class ScrPlay implements Screen, InputProcessor {
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
     }
 
+    public void Update() {
+        nX++;
+    }
 
     void Scroll() {
         if (xCoordBg1 == 1280) {

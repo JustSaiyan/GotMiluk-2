@@ -5,11 +5,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.gotmiluk.munchingtime.SprPancake;
 
-public class SprHeroshot extends Sprite {
-    public SprHeroshot(int nW, int nH, int nX, int nY){
+public class SprPancakeshot extends Sprite {
+    public SprPancakeshot(int nW, int nH, int nX, int nY) {
         super (new Texture(Gdx.files.internal("fireball.png"))); //Kieran's final project
         setSize(nW, nH);
         setPosition(nX, nY);
-        setFlip(false, false);
+    }
+    public void shoot (int nY) {
+       
     }
 }
