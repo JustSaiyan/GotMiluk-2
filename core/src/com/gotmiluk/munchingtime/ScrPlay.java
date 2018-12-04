@@ -18,7 +18,7 @@ import java.util.Timer;
 
 public class ScrPlay implements Screen, InputProcessor {
     SpriteBatch batch;
-    SprPancake sprHero;
+    SprPancake sprPancake;
     SprEnemy sprEnemy;
     SprPizza sprPizza;
     GamMunch game;
@@ -47,7 +47,7 @@ public class ScrPlay implements Screen, InputProcessor {
         currentTime = (startTime) / 1000;
         Timer timer = new Timer();
 
-        sprHero = new SprPancake(80, 100, 55, 128);
+        sprPancake = new SprPancake(80, 100, 55, 128);
         sprEnemy = new SprEnemy(60, 100, 500, 45);
         sprPizza = new SprPizza(60, 100, 500, 400);
 
@@ -77,7 +77,7 @@ public class ScrPlay implements Screen, InputProcessor {
     public boolean keyTyped(char character) {
         if(character =='w') {
             dYspeedM = 2;
-            sprHero.setY(sprHero.getY() + 20);
+            sprPancake.setY(sprPancake.getY() + 20);
 
         }
         return true;
@@ -129,7 +129,7 @@ public class ScrPlay implements Screen, InputProcessor {
         batch.draw(TxBackground1, xCoordBg1, 0);
         batch.draw(TxBackground2, xCoordBg2, 0);
         Scroll();
-        sprHero.draw(batch);
+        sprPancake.draw(batch);
         sprEnemy.draw(batch);
         sprPizza.draw(batch);
 
@@ -141,8 +141,8 @@ public class ScrPlay implements Screen, InputProcessor {
             batch.setProjectionMatrix(oc.combined);
             startTime++;
         } else if (nLives == 0) {
-            sprHero.setX(55);
-            sprHero.setY(128);
+            sprPancake.setX(55);
+            sprPancake.setY(128);
             sprEnemy.setX(500);
             sprEnemy.setY(45);
             sprPizza.setY(nRamdomY);
@@ -154,9 +154,9 @@ public class ScrPlay implements Screen, InputProcessor {
             game.updateState(0);
         }
 
-        if (sprHero.getY() > 50) {
+        if (sprPancake.getY() > 50) {
             dYspeedM -= 1;
-            sprHero.translateY((float) dYspeedM);
+            sprPancake.translateY((float) dYspeedM);
 
         }
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
@@ -177,17 +177,17 @@ public class ScrPlay implements Screen, InputProcessor {
         font.draw(batch, s2, 9, 470);
         batch.end();
 
-        if (sprHero.getX() < 0) {
-            sprHero.setX(0);
+        if (sprPancake.getX() < 0) {
+            sprPancake.setX(0);
         }
-        if (sprHero.getX() > 800 - 64) {
-            sprHero.setX(800 - 64);
+        if (sprPancake.getX() > 800 - 64) {
+            sprPancake.setX(800 - 64);
         }
-        if (sprHero.getY() < 0) {
-            sprHero.setY(0);
+        if (sprPancake.getY() < 0) {
+            sprPancake.setY(0);
         }
-        if (sprHero.getY() > 400) {
-            sprHero.setY(400);
+        if (sprPancake.getY() > 400) {
+            sprPancake.setY(400);
         }
         if (sprEnemy.getX() == 0) {
             sprEnemy.setX(600);
@@ -196,12 +196,12 @@ public class ScrPlay implements Screen, InputProcessor {
             sprPizza.setY(nRamdomY);
             sprPizza.setX(500);
         }
-        if (sprHero.getBoundingRectangle().overlaps(sprPizza.getBoundingRectangle())) {
+        if (sprPancake.getBoundingRectangle().overlaps(sprPizza.getBoundingRectangle())) {
             nLives--;
             sprPizza.setX(500);
             sprPizza.setY(nRamdomY);
         }
-        if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
+        if (sprPancake.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             nLives--;
             sprEnemy.setX(500);
             sprEnemy.setY(45);
