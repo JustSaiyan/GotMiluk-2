@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public class SprEnemy extends Sprite {
+public class SprBurger extends Sprite {
     Animation<TextureRegion> walkAnimation; // Must declare frame type (TextureRegion)
     Texture walkSheet;
     // A variable for tracking elapsed time for the animation
@@ -18,7 +18,7 @@ public class SprEnemy extends Sprite {
 
 
 
-    public SprEnemy(int nW, int nH, int nX, int nY) {
+    public SprBurger(int nW, int nH, int nX, int nY) {
      walkSheet = new Texture("Sprite Sheet .png");
      TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is columns 1 is rows
      setSize(nW, nH);
