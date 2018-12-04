@@ -19,7 +19,7 @@ import java.util.Timer;
 public class ScrPlay implements Screen, InputProcessor {
     SpriteBatch batch;
     SprPancake sprPancake;
-    SprEnemy sprEnemy;
+    SprBurger sprBurger;
     SprPizza sprPizza;
     GamMunch game;
     OrthographicCamera oc;
@@ -48,7 +48,7 @@ public class ScrPlay implements Screen, InputProcessor {
         Timer timer = new Timer();
 
         sprPancake = new SprPancake(80, 100, 55, 128);
-        sprEnemy = new SprEnemy(60, 100, 500, 45);
+        sprBurger = new SprBurger(60, 100, 500, 45);
         sprPizza = new SprPizza(60, 100, 500, 400);
 
         batch = new SpriteBatch();
@@ -130,7 +130,7 @@ public class ScrPlay implements Screen, InputProcessor {
         batch.draw(TxBackground2, xCoordBg2, 0);
         Scroll();
         sprPancake.draw(batch);
-        sprEnemy.draw(batch);
+        sprBurger.draw(batch);
         sprPizza.draw(batch);
 
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
@@ -143,8 +143,8 @@ public class ScrPlay implements Screen, InputProcessor {
         } else if (nLives == 0) {
             sprPancake.setX(55);
             sprPancake.setY(128);
-            sprEnemy.setX(500);
-            sprEnemy.setY(45);
+            sprBurger.setX(500);
+            sprBurger.setY(45);
             sprPizza.setY(nRamdomY);
             sprPizza.setX(nRamdomX);
             nLives++;
@@ -189,8 +189,8 @@ public class ScrPlay implements Screen, InputProcessor {
         if (sprPancake.getY() > 400) {
             sprPancake.setY(400);
         }
-        if (sprEnemy.getX() == 0) {
-            sprEnemy.setX(600);
+        if (sprBurger.getX() == 0) {
+            sprBurger.setX(600);
         }
         if (sprPizza.getX() == 0) {
             sprPizza.setY(nRamdomY);
@@ -201,10 +201,10 @@ public class ScrPlay implements Screen, InputProcessor {
             sprPizza.setX(500);
             sprPizza.setY(nRamdomY);
         }
-        if (sprPancake.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
+        if (sprPancake.getBoundingRectangle().overlaps(sprBurger.getBoundingRectangle())) {
             nLives--;
-            sprEnemy.setX(500);
-            sprEnemy.setY(45);
+            sprBurger.setX(500);
+            sprBurger.setY(45);
         }
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
