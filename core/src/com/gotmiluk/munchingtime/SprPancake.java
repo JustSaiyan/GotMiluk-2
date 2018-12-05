@@ -9,8 +9,6 @@ public class SprPancake extends Sprite {
    public State Statecurrent;
    public State Stateprevious;
 
-
-
     public SprPancake(int nW, int nH, int nX, int nY){
         super (new Texture(Gdx.files.internal("New Piskel.gif"))); //Kieran's final project
         setSize(nW, nH);
