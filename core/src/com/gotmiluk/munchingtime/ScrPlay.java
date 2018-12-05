@@ -164,11 +164,6 @@ public class ScrPlay implements Screen, InputProcessor {
             nLives++;
             game.updateState(0);
         }
-
-        if (Gdx.input.isKeyPressed(Keys.A)) {
-            sprHero.setX(sprHero.getX() - 4);
-
-        }
         if (Gdx.input.isKeyPressed(Keys.W)) {
             sprHero.setY(sprHero.getY() + 3);
             dYspeedM = 2;
@@ -177,9 +172,6 @@ public class ScrPlay implements Screen, InputProcessor {
         if (sprHero.getY() > 50) {
             dYspeedM -= 1;
             sprHero.translateY((float) dYspeedM);
-        }
-        if (Gdx.input.isKeyPressed(Keys.D)) {
-            sprHero.setX(sprHero.getX() + 4);
         }
 
         batch.setProjectionMatrix(oc.combined);
@@ -215,11 +207,10 @@ public class ScrPlay implements Screen, InputProcessor {
         }
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
+        sprPancakeshot.update();
     }
 
-    public void Update() {
-        nX++;
-    }
+
 
     void Scroll() {
         if (xCoordBg1 == 1280) {
