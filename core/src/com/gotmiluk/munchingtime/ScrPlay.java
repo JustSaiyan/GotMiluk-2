@@ -140,18 +140,7 @@ public class ScrPlay implements Screen, InputProcessor {
         if (nLives > 0) {
             batch.setProjectionMatrix(oc.combined);
             startTime++;
-        } else if (nLives == 0) {
-            sprPancake.setX(55);
-            sprPancake.setY(128);
-            sprBurger.setX(500);
-            sprBurger.setY(45);
-            sprPizza.setY(nRamdomY);
-            sprPizza.setX(nRamdomX);
-            nLives++;
-            nLives++;
-            nLives++;
-            startTime = 0;
-            game.updateState(0);
+       
         }
 
         if (sprPancake.getY() > 50) {

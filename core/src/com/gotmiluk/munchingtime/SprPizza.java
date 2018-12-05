@@ -19,7 +19,7 @@ public class SprPizza  extends Sprite {
 
     public SprPizza(int nW, int nH, int nX, int nY) {
         walkSheet = new Texture("Pizza SpriteSheet.png");
-        TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is  columns 1 is rows
+        TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 3, walkSheet.getHeight() / 1); //3 is  wcolumns 1 is rows
         setSize(nW, nH);
         setPosition(nX, nY);
         setFlip(false, false);
