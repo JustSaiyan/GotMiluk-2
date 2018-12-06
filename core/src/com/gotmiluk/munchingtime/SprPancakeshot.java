@@ -3,7 +3,6 @@ package com.gotmiluk.munchingtime;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.gotmiluk.munchingtime.SprPancake;
 
 public class SprPancakeshot extends Sprite {
     float fY, fX, fDelayshot;
@@ -17,7 +16,6 @@ public class SprPancakeshot extends Sprite {
         setX(50);
     }
     void update () {
-        fDelayshot =
         fX = getX();
         fX+=20;
         setX(fX);
