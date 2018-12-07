@@ -196,8 +196,7 @@ public class ScrPlay implements Screen, InputProcessor {
             sprBurger.setX(500);
             sprBurger.setY(45);
         }
-        xCoordBg1 += BACKGROUND_MOVE_SPEED;
-        xCoordBg2 += BACKGROUND_MOVE_SPEED;
+
     }
 
 
@@ -207,6 +206,11 @@ public class ScrPlay implements Screen, InputProcessor {
         }
         if (xCoordBg2 == 1280) {
             xCoordBg2 = -1280;
+
+            xCoordBg1 += BACKGROUND_MOVE_SPEED;
+            xCoordBg2 += BACKGROUND_MOVE_SPEED;
+
+
         }
     }
 
