@@ -39,13 +39,10 @@ public class ScrPlay implements Screen, InputProcessor {
     public ScrPlay(GamMunch _game) {
         batch = new SpriteBatch();
         game = _game;
-        nLives = 3;
         font = new BitmapFont();
         Scanner SC = new Scanner(System.in);
-        //startTime = System.currentTimeMillis();
         startTime += Gdx.graphics.getDeltaTime();
         currentTime = (startTime) / 1000;
-        Timer timer = new Timer();
 
         sprPancake = new SprPancake(80, 100, 55, 128);
         sprBurger = new SprBurger(60, 100, 500, 45);
@@ -133,14 +130,14 @@ public class ScrPlay implements Screen, InputProcessor {
         sprBurger.draw(batch);
         sprPizza.draw(batch);
 
+
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
 
 
-        if (nLives > 0) {
-            batch.setProjectionMatrix(oc.combined);
+        if (sprPancake.getnLives() > 0) {
+            //sprPancake.Lives();
             startTime++;
-       
         }
 
         if (sprPancake.getY() > 50) {
@@ -153,12 +150,7 @@ public class ScrPlay implements Screen, InputProcessor {
             musPlay.stop();
         }
 
-
-
-        batch.setProjectionMatrix(oc.combined);
-
-
-        font.draw(batch, Integer.toString(nLives), 50, 450);
+        font.draw(batch, Integer.toString(sprPancake.getnLives()), 50, 450);
         font.draw(batch, Long.toString(startTime), 50, 470);
         String s1 = "Lives:";
         String s2 = "Time:";
@@ -185,13 +177,22 @@ public class ScrPlay implements Screen, InputProcessor {
             sprPizza.setY(nRamdomY);
             sprPizza.setX(500);
         }
+        if (sprPancake.getnLives() > 0) {
+            startTime++;
+        } else if (sprPancake.getnLives() == 0) {
+            sprPancake.setX(55);
+            sprPancake.setY(128);
+            sprPancake.getnLives();
+            startTime = 0;
+            game.updateState(0);
+        }
         if (sprPancake.getBoundingRectangle().overlaps(sprPizza.getBoundingRectangle())) {
-            nLives--;
+            sprPancake.loseLife();
             sprPizza.setX(500);
             sprPizza.setY(nRamdomY);
         }
         if (sprPancake.getBoundingRectangle().overlaps(sprBurger.getBoundingRectangle())) {
-            nLives--;
+            sprPancake.loseLife();
             sprBurger.setX(500);
             sprBurger.setY(45);
         }
