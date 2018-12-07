@@ -35,9 +35,6 @@ public class ScrPlay implements Screen, InputProcessor {
         game = _game;
         nLives = 3;
         font = new BitmapFont();
-        //spawnHeroshot();
-
-        //nY = (int) sprHero.getY();
 
         sprHero = new SprPancake(80, 100, 0, 128);
         sprPancakeshot = new SprPancakeshot(80,100, -100, -100);
@@ -50,24 +47,6 @@ public class ScrPlay implements Screen, InputProcessor {
         xCoordBg1 = 0;
         xCoordBg2 = -1280;
     }
-
-   /* private void spawnHeroshot() {
-        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            sprPancakeshot = new SprPancakeshot(80,50,0,128);
-            sprPancakeshot.draw(batch);
-            sprPancakeshot.setX(sprHero.getX());
-            sprPancakeshot.setY(sprHero.getY());
-            sprPancakeshot.setX(sprPancakeshot.getX() + 15);
-            if (sprPancakeshot.getX() > 500) {
-                sprPancakeshot.setX(0);
-            }
-        }
-    }
-    */
-   //@Override
-   //public void update() {
-
-   //}
 
     @Override
     public boolean keyDown(int keycode) {
@@ -82,7 +61,6 @@ public class ScrPlay implements Screen, InputProcessor {
     @Override
     public boolean keyTyped(char character) {
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            //sprPancakeshot.setX(sprHero.getX());
             sprPancakeshot.shoot((int) sprHero.getY());
             if (sprPancakeshot.getX() > 500) {
                 sprPancakeshot.setX(0);
@@ -189,9 +167,8 @@ public class ScrPlay implements Screen, InputProcessor {
         if (sprHero.getY() > 400) {
             sprHero.setY(400);
         }
-        if(sprEnemy.getX()==0) {
+        if(sprEnemy.getX() == 0) {
             sprEnemy.setX(600);
-
         }
         if (sprHero.getBoundingRectangle().overlaps(sprEnemy.getBoundingRectangle())) {
             nLives--;
