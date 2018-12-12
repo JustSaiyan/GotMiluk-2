@@ -9,13 +9,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Timer;
-import com.badlogic.gdx.utils.Array;
-import com.gotmiluk.munchingtime.SprPancakeshot;
 
 
 public class ScrPlay implements Screen, InputProcessor {
@@ -23,17 +20,16 @@ public class ScrPlay implements Screen, InputProcessor {
     SprPancake sprPancake;
     SprBurger sprBurger;
     SprPizza sprPizza;
-    SprPancake sprHero;
     SprPancakeshot sprPancakeshot;
     GamMunch game;
     OrthographicCamera oc;
     Texture TxBackground1, TxBackground2;
     long startTime, currentTime;
-    private int nLives, nTime;
+    private int nLives;
     Music musPlay;
     private BitmapFont font;
     double dYspeedM;
-    int xMax, xCoordBg1, xCoordBg2, nX, nY;
+    int xMax, xCoordBg1, xCoordBg2;
     final int BACKGROUND_MOVE_SPEED = 2; // pixels per second. Put your value here.
     int nRamdomY;
     int nRamdomX;
@@ -45,11 +41,8 @@ public class ScrPlay implements Screen, InputProcessor {
         game = _game;
         nLives = 3;
         font = new BitmapFont();
-        Scanner SC = new Scanner(System.in);
-        //startTime = System.currentTimeMillis();
         startTime += Gdx.graphics.getDeltaTime();
         currentTime = (startTime) / 1000;
-        Timer timer = new Timer();
 
         sprPancake = new SprPancake(80, 100, 55, 128);
         sprBurger = new SprBurger(60, 100, 500, 45);
@@ -67,24 +60,6 @@ public class ScrPlay implements Screen, InputProcessor {
         nRamdomY= rand.nextInt(400) + 200;
         nRamdomX= rand.nextInt(500) + 200;
     }
-
-   /* private void spawnHeroshot() {
-        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            sprPancakeshot = new SprPancakeshot(80,50,0,128);
-            sprPancakeshot.draw(batch);
-            sprPancakeshot.setX(sprHero.getX());
-            sprPancakeshot.setY(sprHero.getY());
-            sprPancakeshot.setX(sprPancakeshot.getX() + 15);
-            if (sprPancakeshot.getX() > 500) {
-                sprPancakeshot.setX(0);
-            }
-        }
-    }
-    */
-   //@Override
-   //public void update() {
-
-   //}
 
     @Override
     public boolean keyDown(int keycode) {
@@ -104,7 +79,6 @@ public class ScrPlay implements Screen, InputProcessor {
         }
 
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            //sprPancakeshot.setX(sprHero.getX());
             sprPancakeshot.shoot((int) sprPancake.getY());
             if (sprPancakeshot.getX() > 500) {
                 sprPancakeshot.setX(0);
@@ -182,17 +156,13 @@ public class ScrPlay implements Screen, InputProcessor {
             sprBurger.setY(45);
             sprPizza.setY(nRamdomY);
             sprPizza.setX(nRamdomX);
-            nLives++;
-            nLives++;
-            nLives++;
+            nLives+=3;
             startTime = 0;
             game.updateState(0);
         }
-
         if (sprPancake.getY() > 50) {
             dYspeedM -= 1;
             sprPancake.translateY((float) dYspeedM);
-
         }
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
             game.updateState(0);
@@ -208,20 +178,11 @@ public class ScrPlay implements Screen, InputProcessor {
         font.draw(batch, s2, 9, 470);
         batch.end();
 
-        if (sprPancake.getX() < 0) {
-            sprPancake.setX(0);
-        }
-        if (sprPancake.getX() > 800 - 64) {
-            sprPancake.setX(800 - 64);
-        }
         if (sprPancake.getY() < 0) {
             sprPancake.setY(0);
         }
         if (sprPancake.getY() > 400) {
             sprPancake.setY(400);
-        }
-        if (sprBurger.getX() == 0) {
-            sprBurger.setX(600);
         }
         if (sprPizza.getX() < 0) {
             sprPizza.setY(nRamdomY);
