@@ -40,9 +40,7 @@ public class SprPancake extends Sprite {
     }
 
   public  void getLives() {
-       nLives++;
-      nLives++;
-      nLives++;
+       nLives+=3;
 
     }
 }
