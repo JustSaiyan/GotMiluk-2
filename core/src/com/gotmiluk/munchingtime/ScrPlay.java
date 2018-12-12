@@ -136,10 +136,14 @@ public class ScrPlay implements Screen, InputProcessor {
 
 
         if (sprPancake.getnLives() > 0) {
-            //sprPancake.Lives();
+            
             startTime++;
-        }
 
+        }
+        if (sprPancake.getnLives() < 0) {
+            sprPancake.getLives();
+            game.updateState(0);
+        }
         if (sprPancake.getY() > 50) {
             dYspeedM -= 1;
             sprPancake.translateY((float) dYspeedM);

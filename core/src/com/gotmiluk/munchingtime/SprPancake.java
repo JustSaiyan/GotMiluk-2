@@ -18,23 +18,31 @@ public class SprPancake extends Sprite {
         nLives = 3;
     }
 
- /*   public void Lives() {
+    /*   public void Lives() {
 
-        if (nLives > 0) {
-            startTime++;
-        } else if (nLives == 0) {
-            sprPancake.setX(55);
-            sprPancake.setY(128);
-            nLives+=3;
-            startTime = 0;
-            game.updateState(0);
-        }
-    }
-*/
+           if (nLives > 0) {
+               startTime++;
+           } else if (nLives == 0) {
+               sprPancake.setX(55);
+               sprPancake.setY(128);
+               nLives+=3;
+               startTime = 0;
+               game.updateState(0);
+           }
+       }
+   */
     int getnLives() {
         return nLives;
     }
-    void loseLife(){
+
+    void loseLife() {
         nLives--;
+    }
+
+  public  void getLives() {
+       nLives++;
+      nLives++;
+      nLives++;
+
     }
 }
