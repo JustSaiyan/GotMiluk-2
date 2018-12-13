@@ -6,6 +6,7 @@ import com.badlogic.gdx.audio.Music;
 
 public class GamMunch extends Game {
 	ScrPlay scrPlay;
+	ScrBoss scrBoss;
 	ScrMenu scrMenu;
 
 
@@ -16,6 +17,8 @@ public class GamMunch extends Game {
 		if (nScreen == 0) {
 			setScreen(scrMenu);
 		} else if (nScreen == 1) {
+			setScreen(scrPlay);
+		} else if (nScreen == 2) {
 			setScreen(scrPlay);
 		}
 	}
