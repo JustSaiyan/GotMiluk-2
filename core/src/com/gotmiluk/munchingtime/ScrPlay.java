@@ -77,7 +77,6 @@ public class ScrPlay implements Screen, InputProcessor {
             dYspeedM = 2;
             sprPancake.setY(sprPancake.getY() + 20);
         }
-
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {
             sprPancakeshot.shoot((int) sprPancake.getY());
             if (sprPancakeshot.getX() > 500) {
@@ -188,6 +187,10 @@ public class ScrPlay implements Screen, InputProcessor {
             sprPizza.setY(nRamdomY);
             sprPizza.setX(500);
         }
+        if (sprBurger.getX() < 0) {
+            sprBurger.setY(45);
+            sprBurger.setX(500);
+        }
         if (sprPancake.getBoundingRectangle().overlaps(sprPizza.getBoundingRectangle())) {
             nLives--;
             sprPizza.setX(500);
@@ -209,6 +212,10 @@ public class ScrPlay implements Screen, InputProcessor {
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
         sprPancakeshot.update();
+
+        if (startTime == 1000) {
+            game.updateState(2);
+        }
     }
 
 
