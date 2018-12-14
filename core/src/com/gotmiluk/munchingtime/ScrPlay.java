@@ -183,6 +183,14 @@ public class ScrPlay implements Screen, InputProcessor {
         if (sprPancake.getY() > 400) {
             sprPancake.setY(400);
         }
+        if (sprPizza.getY() < 0) {
+            sprPizza.setY(nRamdomY);
+            sprPizza.setX(500);
+        }
+        if (sprPizza.getY() > 400) {
+            sprPizza.setY(nRamdomY);
+            sprPizza.setX(500);
+        }
         if (sprPizza.getX() < 0) {
             sprPizza.setY(nRamdomY);
             sprPizza.setX(500);

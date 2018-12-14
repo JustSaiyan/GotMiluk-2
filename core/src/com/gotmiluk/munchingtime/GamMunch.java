@@ -19,7 +19,7 @@ public class GamMunch extends Game {
 		} else if (nScreen == 1) {
 			setScreen(scrPlay);
 		} else if (nScreen == 2) {
-			setScreen(scrPlay);
+			setScreen(scrBoss);
 		}
 	}
 
@@ -30,6 +30,7 @@ public class GamMunch extends Game {
 		// notice that "this" is passed to each screen. Each screen now has access to methods within the "game" master program
 		scrMenu = new ScrMenu(this);
 		scrPlay = new ScrPlay(this);
+		scrBoss = new ScrBoss(this);
 		updateState(0);
 	}
 
