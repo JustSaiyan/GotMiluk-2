@@ -207,10 +207,6 @@ public class ScrBoss implements Screen, InputProcessor {
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
         xCoordBg2 += BACKGROUND_MOVE_SPEED;
         sprPancakeshot.update();
-
-        if (startTime == 1000) {
-            game.updateState(2);
-        }
     }
 
 
