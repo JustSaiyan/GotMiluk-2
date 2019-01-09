@@ -60,7 +60,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
     @Override
     public boolean keyTyped(char character) {
-        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+        if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
             sprPancakeshot.shoot((int) sprHero.getY());
             if (sprPancakeshot.getX() > 500) {
                 sprPancakeshot.setX(0);
