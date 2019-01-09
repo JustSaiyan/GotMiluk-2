@@ -176,11 +176,11 @@ public class ScrPlay implements Screen, InputProcessor {
             sprBurger.setY(45);
         }
         if (sprPancakeshot.getBoundingRectangle().overlaps(sprBurger.getBoundingRectangle())) {
-            sprBurger.setX(500);
+            sprBurger.setX(640);
             sprBurger.setY(45);
         }
         if (sprPancakeshot.getBoundingRectangle().overlaps(sprPizza.getBoundingRectangle())) {
-            sprPizza.setX(500);
+            sprPizza.setX(640);
             sprPizza.setY(nRamdomY);
         }
         xCoordBg1 += BACKGROUND_MOVE_SPEED;
