@@ -245,8 +245,8 @@ public class ScrPlay implements Screen, InputProcessor {
     @Override
     public void dispose() {
         batch.dispose();
-        TxBackground1.dispose();
-        TxBackground2.dispose();
+        txBackground1.dispose();
+        txBackground2.dispose();
     }
 }
 
