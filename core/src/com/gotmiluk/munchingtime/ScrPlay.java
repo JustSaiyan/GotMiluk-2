@@ -140,7 +140,7 @@ public class ScrPlay implements Screen, InputProcessor {
 
         }
         if (sprPancake.getnLives() < 0) {
-            sprPancake.getLives();
+            sprPancake.setnLives();
             game.updateState(0);
             sprPizza.setX(500);
             sprPizza.setY(nRamdomY);
