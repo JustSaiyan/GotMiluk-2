@@ -23,7 +23,7 @@ public class ScrPlay implements Screen, InputProcessor {
     SprPancakeshot sprPancakeshot;
     GamMunch game;
     OrthographicCamera oc;
-    Texture TxBackground1, TxBackground2;
+    Texture txBackground1, txBackground2;
     long startTime, currentTime;
     private int nLives;
     Music musPlay;
@@ -50,8 +50,8 @@ public class ScrPlay implements Screen, InputProcessor {
         sprPancakeshot = new SprPancakeshot(80,100, -100, -100);
 
         batch = new SpriteBatch();
-        TxBackground1 = new Texture("Background.jpg");
-        TxBackground2 = new Texture("Background.jpg"); // identical
+        txBackground1 = new Texture("Background.jpg");
+        txBackground2 = new Texture("Background.jpg"); // identical
         xMax = 1280;
         xCoordBg1 = 0;
         xCoordBg2 = -1280;
@@ -111,8 +111,8 @@ public class ScrPlay implements Screen, InputProcessor {
         oc.update();
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
-        batch.draw(TxBackground1, xCoordBg1, 0);
-        batch.draw(TxBackground2, xCoordBg2, 0);
+        batch.draw(txBackground1, xCoordBg1, 0);
+        batch.draw(txBackground2, xCoordBg2, 0);
         Scroll();
         sprPancake.draw(batch);
         sprBurger.draw(batch);
