@@ -61,51 +61,6 @@ public class ScrPlay implements Screen, InputProcessor {
     }
 
     @Override
-    public boolean keyDown(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(char character) {
-        if(character =='w') {
-            dYspeedM = 2;
-            sprPancake.setY(sprPancake.getY() + 20);
-
-        }
-        return true;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
-    }
-
-    @Override
     public void show() {
         oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -207,8 +162,25 @@ public class ScrPlay implements Screen, InputProcessor {
         }
 
     }
+    @Override
+    public boolean keyDown(int keycode) {
+        return false;
+    }
 
+    @Override
+    public boolean keyUp(int keycode) {
+        return false;
+    }
 
+    @Override
+    public boolean keyTyped(char character) {
+        if(character =='w') {
+            dYspeedM = 2;
+            sprPancake.setY(sprPancake.getY() + 20);
+
+        }
+        return true;
+    }
     void Scroll() {
         if (xCoordBg1 == 1280) {
             xCoordBg1 = -1280;
@@ -222,6 +194,34 @@ public class ScrPlay implements Screen, InputProcessor {
 
         }
     }
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
+    }
+
+
+
+
 
     @Override
     public void resize(int width, int height) {
