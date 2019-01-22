@@ -78,7 +78,7 @@ public class ScrPlay implements Screen, InputProcessor {
             sprPancake.setY(sprPancake.getY() + 20);
         }
 
-        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+        if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
             sprPancakeshot.shoot((int) sprPancake.getY());
             if (sprPancakeshot.getX() > 500) {
                 sprPancakeshot.setX(0);
